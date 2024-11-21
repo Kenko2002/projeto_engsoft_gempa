@@ -35,7 +35,7 @@ jobs:
       # Executa os testes
       - name: Run Tests
         run: |
-          pytest projeto_engsoft_gempa/calculovolume-main/test_volume_cilindro.py
+          pytest calculovolume-main/test_volume_cilindro.py
 
       # Executa o SonarQube Cloud Scan
       - name: SonarQube Cloud Scan
