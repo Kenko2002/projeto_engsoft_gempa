@@ -29,7 +29,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest # Instalar o pytest para os testes
           pip install -r requirements.txt || true # Caso você tenha um arquivo requirements.txt
-
+          pip install pytest-json-report
+          
       # Executa os testes
       - name: Run Tests
         run: |
