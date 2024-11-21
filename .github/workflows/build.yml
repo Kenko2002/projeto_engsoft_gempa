@@ -32,10 +32,10 @@ jobs:
           pip install pytest-json-report
           
       # Executa os testes
-      - name: Run Tests
+      - name: Run Tests ( Calculo de Volume )
         run: |
           pytest calculovolume-main/test_volume_cilindro.py --json-report
-      - name: List Successful Tests
+      - name: List Successful Tests ( Calculo de Volume )
         run: |
           python -c "
           import json
@@ -51,10 +51,10 @@ jobs:
                   print(f' - {test}')
               "
       # Executa os testes
-      - name: Run Tests
+      - name: Run Tests (Conversão de Número Romano)
         run: |
           pytest converterromano-main/test_converterpararomano.py --json-report
-      - name: List Successful Tests
+      - name: List Successful Tests (Conversão de Número Romano)
         run: |
           python -c "
           import json
