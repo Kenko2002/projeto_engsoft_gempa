@@ -33,7 +33,23 @@ jobs:
       # Executa os testes
       - name: Run Tests
         run: |
-          pytest calculovolume-main/test_volume_cilindro.py
+          pytest calculovolume-main/test_volume_cilindro.py --json-report
+
+      - name: List Successful Tests
+        run: |
+          python -c "
+          import json
+          with open('.report.json') as f:
+              report = json.load(f)
+              successful_tests = [
+                  test['nodeid']
+                  for test in report['tests']
+                  if test['outcome'] == 'passed'
+              ]
+              print('Successful tests:')
+              for test in successful_tests:
+                  print(f' - {test}')
+              "
 
       # Executa o SonarQube Cloud Scan
       - name: SonarQube Cloud Scan
