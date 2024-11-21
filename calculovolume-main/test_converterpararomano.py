@@ -1,5 +1,5 @@
 import pytest
-from romano import converter_para_romano
+from converter_para_romano import converter_para_romano
 
 def test_valores_validos():
     """Testa números dentro do intervalo válido."""
