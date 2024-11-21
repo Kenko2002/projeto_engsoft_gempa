@@ -35,7 +35,8 @@ jobs:
       - name: Run Tests
         run: |
           pytest calculovolume-main/test_volume_cilindro.py --json-report
-
+          pytest calculovolume-main/test_converterpararomano.py --json-report
+          
       - name: List Successful Tests
         run: |
           python -c "
