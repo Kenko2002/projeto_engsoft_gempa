@@ -38,6 +38,7 @@ jobs:
 
       - name: Migrate Database
         run: |
+          cd main
           python manage.py migrate --noinput
         env:
           DATABASE_URL: postgresql://postgres:password@localhost:5432/mydatabase  # Adapte para suas configurações
