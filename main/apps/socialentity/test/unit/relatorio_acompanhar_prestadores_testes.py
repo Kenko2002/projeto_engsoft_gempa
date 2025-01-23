@@ -3,7 +3,13 @@ import requests
 from datetime import timedelta, datetime
 
 import os
+diretorio_atual = os.getcwd()
 print(f"Diretório atual: {os.getcwd()}")
+diretorio_superior = diretorio_atual
+for _ in range(4):
+    diretorio_superior = os.path.dirname(diretorio_superior)
+
+print(f"Diretório 4 níveis acima: {diretorio_superior}")
 
 from ....atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
 from ....alocacao.models import Alocacao, Presenca
