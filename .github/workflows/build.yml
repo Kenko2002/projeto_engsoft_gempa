@@ -69,6 +69,7 @@ jobs:
           cd main
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest-django
           pip install pytest pytest-json-report
 
       - name: Migrate Database
