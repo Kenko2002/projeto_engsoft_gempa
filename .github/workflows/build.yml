@@ -46,7 +46,14 @@ jobs:
 
 
 
-     
+      - name: Run Server
+      env:
+        EMAIL_HOST: ""        
+        EMAIL_HOST_PASSWORD: ""
+        DATABASE_URL: ""
+        SECRET_KEY: ""
+      run: |
+        python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
 
       
 
