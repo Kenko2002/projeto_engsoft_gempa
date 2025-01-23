@@ -84,7 +84,7 @@ jobs:
           python manage.py makemigrations
 
           python manage.py check
-          python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+          python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000
 
 
       - name: SonarQube Cloud Scan
