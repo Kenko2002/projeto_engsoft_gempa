@@ -1,6 +1,10 @@
 import pytest
 import requests
 from datetime import timedelta, datetime
+
+import os
+print(f"Diretório atual: {os.getcwd()}")
+
 from ....atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
 from ....alocacao.models import Alocacao, Presenca
 from ....encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
