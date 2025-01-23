@@ -1,33 +1,37 @@
 import pytest
 import requests
 from datetime import timedelta, datetime
-
+from pytest_django.fixtures import setup_django
 import os
-diretorio_atual = os.getcwd()
-print(f"Diretório atual: {os.getcwd()}")
-diretorio_superior = diretorio_atual
-for _ in range(4):
-    diretorio_superior = os.path.dirname(diretorio_superior)
-
-print(f"Diretório 4 níveis acima: {diretorio_superior}")
 
 
-try:
-    from main.apps.atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
-    from main.apps.alocacao.models import Alocacao, Presenca
-    from main.apps.encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
-    from main.apps.socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usuario
-except ImportError as e:
-    print(f"Erro ao importar os módulos: {e}")
-    raise
-
-
+@pytest.fixture(scope='session', autouse=True)
+def django_setup():
+    setup_django()
 
 # ... (seu código de teste anterior)
 
 @pytest.mark.django_db  # Adiciona esta linha para usar o banco de dados de teste
 def test_condicao_endpoint():
     """Testa o endpoint /area-tecnico/condicao/."""
+    
+    diretorio_atual = os.getcwd()
+    print(f"Diretório atual: {os.getcwd()}")
+    diretorio_superior = diretorio_atual
+    for _ in range(4):
+        diretorio_superior = os.path.dirname(diretorio_superior)
+
+    print(f"Diretório 4 níveis acima: {diretorio_superior}")
+    try:
+        from atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
+        from alocacao.models import Alocacao, Presenca
+        from encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
+        from socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usuario
+    except ImportError as e:
+        print(f"Erro ao importar os módulos: {e}")
+        raise
+
+
     print("INICIANDO EXECUÇÃO")
     # Criação de objetos de teste
     usuario_prestador = Usuario.objects.create_user(username='prestador', password='password')
