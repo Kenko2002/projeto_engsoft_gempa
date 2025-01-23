@@ -31,17 +31,16 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
+          pwd
           cd main
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest pytest-json-report
-          cd .. # Voltar para o diretório raiz
 
       - name: Migrate Database
         run: |
-          cd main
+          pwd
           python manage.py migrate --noinput
-          cd .. # Voltar para o diretório raiz
         env:
           DATABASE_URL: postgresql://postgres:password@localhost:5432/mydatabase
           SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
@@ -53,9 +52,8 @@ jobs:
           DATABASE_URL: ""
           SECRET_KEY: ""
         run: |
-          cd main # Entrar no diretório main
+          pwd
           python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
-          cd .. # Voltar para o diretório raiz (opcional, mas boa prática)
 
 
       - name: SonarQube Cloud Scan
