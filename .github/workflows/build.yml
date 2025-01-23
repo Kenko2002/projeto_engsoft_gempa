@@ -82,18 +82,16 @@ jobs:
           pwd
           cd main
           python manage.py makemigrations
-          python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 2> gunicorn_error.log &
-          cat gunicorn_error.log  # Imprimir o conteúdo do log
-          sleep 5 # Tempo menor para verificar o status rapidamente
-          ps aux | grep gunicorn # Verificar se o Gunicorn está rodando
-          sleep 10 # Resto do tempo de espera
-          cd tests
-          pytest relatorio_acompanhar_prestadores_testes.py
-          
+
+          python manage.py check
+          python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+
+
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
 
 
