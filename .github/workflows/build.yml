@@ -77,25 +77,20 @@ jobs:
           cd main
           python manage.py migrate --noinput
 
-      - name: Run Server for Tests 
+      - name: Run Server and Tests
         run: |
           pwd
           cd main
           python manage.py makemigrations
           python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
-
-      - name: Run Tests
-        run: |
-          pwd
-          cd main
-          cd tests
+          sleep 15 # Aguardar o servidor iniciar
+          cd tests # Entrar no diretório de testes
           pytest relatorio_acompanhar_prestadores_testes.py
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
 
 
 
