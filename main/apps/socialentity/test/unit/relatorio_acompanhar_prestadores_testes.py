@@ -21,7 +21,7 @@ from ....socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usua
 @pytest.mark.django_db  # Adiciona esta linha para usar o banco de dados de teste
 def test_condicao_endpoint():
     """Testa o endpoint /area-tecnico/condicao/."""
-
+    print("INICIANDO EXECUÇÃO")
     # Criação de objetos de teste
     usuario_prestador = Usuario.objects.create_user(username='prestador', password='password')
     prestador = Prestador.objects.create(user=usuario_prestador)
