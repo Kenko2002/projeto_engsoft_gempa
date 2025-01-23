@@ -1,10 +1,10 @@
 import pytest
 import requests
 from datetime import timedelta, datetime
-from apps.atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
-from apps.alocacao.models import Alocacao, Presenca
-from apps.encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
-from apps.socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usuario
+from ....atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
+from ....alocacao.models import Alocacao, Presenca
+from ....encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
+from ....socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usuario
 
 # ... (seu código de teste anterior)
 
