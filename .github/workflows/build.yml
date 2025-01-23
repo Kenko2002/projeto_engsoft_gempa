@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:13  # Use a versão compatível com seu projeto
+        image: postgres:13
         ports:
           - 5432:5432
         env:
@@ -35,27 +35,28 @@ jobs:
           cd main
           pip install -r requirements.txt
           pip install pytest pytest-json-report
+          cd .. # Voltar para o diretório raiz
 
       - name: Migrate Database
         run: |
           cd main
           python manage.py migrate --noinput
+          cd .. # Voltar para o diretório raiz
         env:
-          DATABASE_URL: postgresql://postgres:password@localhost:5432/mydatabase  # Adapte para suas configurações
-          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }} # Configure um segredo no GitHub Secrets
-
-
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/mydatabase
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
 
       - name: Run Server
-      env:
-        EMAIL_HOST: ""        
-        EMAIL_HOST_PASSWORD: ""
-        DATABASE_URL: ""
-        SECRET_KEY: ""
-      run: |
-        python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
+        env:
+          EMAIL_HOST: ""        
+          EMAIL_HOST_PASSWORD: ""
+          DATABASE_URL: ""
+          SECRET_KEY: ""
+        run: |
+          cd main # Entrar no diretório main
+          python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
+          cd .. # Voltar para o diretório raiz (opcional, mas boa prática)
 
-      
 
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
