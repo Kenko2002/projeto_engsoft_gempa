@@ -11,10 +11,17 @@ for _ in range(4):
 
 print(f"Diretório 4 níveis acima: {diretorio_superior}")
 
-from ....atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
-from ....alocacao.models import Alocacao, Presenca
-from ....encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
-from ....socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usuario
+
+try:
+    from main.apps.atendimento.models import Condicao, HistoricoCargaHoraria, Execucao # Importe os models necessários
+    from main.apps.alocacao.models import Alocacao, Presenca
+    from main.apps.encaminhamento.models import Vaga, Instituicao, SetorInstitucional, UnidadeOrganizacional, Funcao
+    from main.apps.socialentity.models import Prestador, Tecnico, Endereco, Telefone, Usuario
+except ImportError as e:
+    print(f"Erro ao importar os módulos: {e}")
+    raise
+
+
 
 # ... (seu código de teste anterior)
 
