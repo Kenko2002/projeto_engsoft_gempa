@@ -3,7 +3,8 @@ import requests
 from datetime import timedelta, datetime
 from pytest_django.fixtures import setup_django
 import os
-
+import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')  # Log to cons
 
 @pytest.fixture(scope='session', autouse=True)
 def django_setup():
