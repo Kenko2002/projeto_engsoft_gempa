@@ -82,9 +82,12 @@ jobs:
           pwd
           cd main
           python manage.py makemigrations
-          python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
-          sleep 15 # Aguardar o servidor iniciar
-          cd tests # Entrar no diretório de testes
+          python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 2> gunicorn_error.log &
+          cat gunicorn_error.log  # Imprimir o conteúdo do log
+          sleep 5 # Tempo menor para verificar o status rapidamente
+          ps aux | grep gunicorn # Verificar se o Gunicorn está rodando
+          sleep 10 # Resto do tempo de espera
+          cd tests
           pytest relatorio_acompanhar_prestadores_testes.py
           
       - name: SonarQube Cloud Scan
