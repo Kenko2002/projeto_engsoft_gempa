@@ -82,11 +82,15 @@ jobs:
           pwd
           cd main
           python manage.py makemigrations
-
           python manage.py check
-          python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000
+          python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000 &
 
 
+
+          sleep 15 
+          cd tests
+          pytest relatorio_acompanhar_prestadores_testes.py
+          
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
