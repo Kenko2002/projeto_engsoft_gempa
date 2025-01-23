@@ -79,6 +79,13 @@ jobs:
           python manage.py migrate --noinput && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 &
           python manage.py runserver
 
+      - name: Run Tests
+        run: |
+          pwd
+          cd main
+          cd tests
+          pytest relatorio_acompanhar_prestadores_testes.py
+          
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
