@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 name: Build and Test Django
 
 on:
@@ -54,7 +53,6 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-=======
 name: Build and Test Django
 
 on:
@@ -109,4 +107,3 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
->>>>>>> dce33baa2d24fc789a31c93fb6472c17c97eed02
