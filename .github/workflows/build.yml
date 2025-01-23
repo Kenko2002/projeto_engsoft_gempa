@@ -3,7 +3,6 @@ name: Build and Test Django
 on:
   push:
     branches:
-      - main
       - entrega
   pull_request:
     types: [opened, synchronize, reopened]
