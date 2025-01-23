@@ -88,7 +88,10 @@ jobs:
 
 
           sleep 15 
-          cd tests
+          cd apps
+          cd socialentity
+          cd test
+          cd unit
           pytest relatorio_acompanhar_prestadores_testes.py
           
       - name: SonarQube Cloud Scan
