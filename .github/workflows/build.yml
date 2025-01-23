@@ -45,7 +45,7 @@ jobs:
       EMAIL_HOST_USER: ""
       EMAIL_PORT: 587
       EMAIL_USE_TLS: "True"
-      
+      TEST_URL: http://localhost:8000  
 
     services:
       postgres:
@@ -77,7 +77,7 @@ jobs:
           cd main
           python manage.py migrate --noinput
 
-      - name: Run Server
+      - name: Run Server for Tests 
         run: |
           pwd
           cd main
@@ -95,8 +95,6 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-
 
 
 
