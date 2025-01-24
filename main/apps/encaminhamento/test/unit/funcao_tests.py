@@ -2,10 +2,19 @@ import json
 from rest_framework import status
 from django.test import TestCase, Client
 from django.urls import reverse
-from encaminhamento.models import Funcao
+
 from encaminhamento.serializers import FuncaoSerializer
 from faker import Faker
 import random
+
+
+
+from apps.encaminhamento.models import (
+    Funcao
+)
+
+
+
 
 class FuncaoTests(TestCase):
     def setUp(self):
