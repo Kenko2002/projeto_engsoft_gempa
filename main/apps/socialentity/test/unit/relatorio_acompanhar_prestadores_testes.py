@@ -63,15 +63,14 @@ def test_criar_prestador_completo():
         prestador.save()
 
         
-        for prestador_obj in execucao.prestador:
-            print(f"  Prestador:{prestador_obj} Execução:{execucao}")
-            for condicao_obj in execucao.condicoes:
-                print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
-                for alocacao_obj in condicao_obj.alocacoes: # Ajustado
-                    print(f"      Alocação: {alocacao_obj}")
-                    print(f"        Vaga: {alocacao_obj.vaga}")
-                    for presenca in alocacao_obj.presencas.all():
-                        print(f"          Presença: {presenca} ")
+        print(f"  Prestador:{execucao.prestador} Execução:{execucao}")
+        for condicao_obj in execucao.condicoes:
+            print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
+            for alocacao_obj in condicao_obj.alocacoes: # Ajustado
+                print(f"      Alocação: {alocacao_obj}")
+                print(f"        Vaga: {alocacao_obj.vaga}")
+                for presenca in alocacao_obj.presencas.all():
+                    print(f"          Presença: {presenca} ")
 
         try:
             url = "http://localhost:8000/area-tecnico/condicao/"
