@@ -67,7 +67,14 @@ def test_criar_prestador_completo():
             print("Presenças criadas:")
             for presenca in alocacao.presencas.all(): # Itera sobre as presenças e imprime cada uma
                 print(presenca)
-            
+
+            try:
+                url = "http://localhost:8000/area-tecnico/condicao/"
+                response= requests.get(url)
+                response.raise_for_status()
+                print(response.text)
+            except requests.exceptions.RequestException as e
+                print(f"Erro na requisição: {e}")
 
     except Exception as e:
         print(f"Erro durante a criação do prestador completo: {e}")
