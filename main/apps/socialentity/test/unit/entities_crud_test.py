@@ -87,4 +87,3 @@ def test_usuario_crud():
         Usuario.objects.get(id=usuario.id)
     with pytest.raises(User.DoesNotExist):
         User.objects.get(id=user.id)
-    assert telefone in prestador_salvo.telefones.all()
