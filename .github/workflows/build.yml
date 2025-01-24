@@ -80,7 +80,7 @@ jobs:
       - name: Run Server and Tests
         run: |
           pwd
-          cd main
+          #cd main
           
           
           python manage.py test
