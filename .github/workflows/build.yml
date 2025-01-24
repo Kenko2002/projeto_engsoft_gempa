@@ -85,8 +85,6 @@ jobs:
           python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000 &
 
 
-
-          sleep 15 
           cd apps
           cd socialentity
           cd test
