@@ -90,8 +90,9 @@ jobs:
           cd test
           cd unit
           pip install pytest pytest-json-report pytest-metadata pytest-django
-          pytest entities_crud_test.py -s
-          pytest relatorio_acompanhar_prestadores_testes.py -s
+          pytest entities_crud_test.py 
+          pytest relatorio_acompanhar_prestadores_testes.py 
+          pytest login_tests.py -s
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
