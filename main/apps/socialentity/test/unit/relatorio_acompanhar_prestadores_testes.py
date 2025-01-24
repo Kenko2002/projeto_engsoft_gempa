@@ -65,7 +65,8 @@ def test_criar_prestador_completo():
             print("Nome da alocação criada:")
             print(alocacao)
             print("Presenças criadas:")
-            print(alocacao.presencas)
+            for presenca in alocacao.presencas.all(): # Itera sobre as presenças e imprime cada uma
+                print(presenca)
             
 
     except Exception as e:
