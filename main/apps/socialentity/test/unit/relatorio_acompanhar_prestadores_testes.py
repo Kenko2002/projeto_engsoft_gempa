@@ -63,20 +63,20 @@ def test_criar_prestador_completo(client):
         prestador.save()
 
         
-        print(f"  Prestador:{execucao.prestador} Execução:{execucao}")
-        for condicao_obj in execucao.condicoes.all():
-            print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
-            for alocacao_obj in condicao_obj.alocacoes.all(): 
-                print(f"      Alocação: {alocacao_obj}")
-                print(f"        Vaga: {alocacao_obj.vaga}")
-                for presenca in alocacao_obj.presencas.all():
-                    print(f"          Presença: {presenca} ")
+        #print(f"  Prestador:{execucao.prestador} Execução:{execucao}")
+        #for condicao_obj in execucao.condicoes.all():
+        #    print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
+        #    for alocacao_obj in condicao_obj.alocacoes.all(): 
+        #        print(f"      Alocação: {alocacao_obj}")
+        #        print(f"        Vaga: {alocacao_obj.vaga}")
+        #        for presenca in alocacao_obj.presencas.all():
+        #            print(f"          Presença: {presenca} ")
 
         try:
             url = "/area-tecnico/condicao/" 
             response = client.get(url)
-            print(response.json() ) #imprime a resposta da requisição
-            print(response.json()[0].get("total_horas_cumpridas"))
+            #print(response.json() ) #imprime a resposta da requisição
+            #print(response.json()[0].get("total_horas_cumpridas"))
             assert response.json()[0].get("total_horas_cumpridas") == "50h 0min", "Horas cumpridas não correspondem ao esperado"
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
