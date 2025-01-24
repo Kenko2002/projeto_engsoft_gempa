@@ -90,21 +90,30 @@ jobs:
           cd test
           cd unit
           pip install pytest pytest-json-report pytest-metadata pytest-django
-          pytest entities_crud_test.py 
-          pytest relatorio_acompanhar_prestadores_test.py 
-          pytest cadastro_and_login_test.py
+          #pytest entities_crud_test.py 
+          #pytest relatorio_acompanhar_prestadores_test.py 
+          #pytest cadastro_and_login_test.py
 
+          pytest --cov=main/apps --cov-report xml:../../../coverage.xml entities_crud_test.py
+          pytest --cov=main/apps --cov-report xml:../../../coverage.xml relatorio_acompanhar_prestadores_test.py
+          pytest --cov=main/apps --cov-report xml:../../../coverage.xml cadastro_and_login_test.py
+
+          
           cd ../../../ 
           cd encaminhamento/test/unit 
-          pytest entities_crud_test.py 
+          #pytest entities_crud_test.py 
+          pytest --cov=main/apps --cov-report xml:../../../coverage.xml --cov-append entities_crud_test.py
 
           cd ../../../ 
           cd atendimento/test/unit 
-          pytest entities_crud_test.py -s
-
+          #pytest entities_crud_test.py -s
+          pytest --cov=main/apps --cov-report xml:../../../coverage.xml --cov-append entities_crud_test.py
+          
           cd ../../../ 
           cd alocacao/test/unit 
-          pytest entities_crud_test.py -s
+          #pytest entities_crud_test.py -s
+          pytest --cov=main/apps --cov-report xml:../../../coverage.xml --cov-append entities_crud_test.py
+
 
           #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
           
