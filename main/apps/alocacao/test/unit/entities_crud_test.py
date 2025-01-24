@@ -17,7 +17,7 @@ from apps.alocacao.models import (
     Alocacao, Presenca, DiaCombinado, EnumStatusAlocacao, EnumDiaDaSemana
 )
 from datetime import timedelta, time, datetime
-
+from django.utils import timezone
 
 
 # Alocacao
@@ -56,12 +56,12 @@ def test_alocacao_crud():
 def test_presenca_crud():
 
     presenca = Presenca.objects.create(
-        checkin = datetime.now(),
-        checkout= datetime.now()+timedelta(hours=8)
+        checkin=timezone.now(),
+        checkout=timezone.now() + timedelta(hours=8)
     )
 
     # Teste de update
-    novo_checkin=datetime.now()+timedelta(days=1)
+    novo_checkin = timezone.now() + timedelta(days=1)
     presenca.checkin = novo_checkin
     presenca.save()
     presenca_atualizada = Presenca.objects.get(id=presenca.id)
