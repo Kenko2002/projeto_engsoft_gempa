@@ -1,5 +1,6 @@
 import pytest
 from django.db import IntegrityError 
+from django.contrib.auth.models import User
 from apps.socialentity.models import (
     Telefone, Endereco, EntidadeSocial, Usuario, Prestador,
     Tecnico, Fiscal, Coordenador, Responsavel,
