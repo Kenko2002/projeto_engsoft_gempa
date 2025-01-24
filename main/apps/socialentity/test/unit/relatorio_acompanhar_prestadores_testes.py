@@ -28,7 +28,7 @@ def test_criar_prestador_completo():
             tecnico = Tecnico.objects.create(user=user_tecnico)
 
             prestador = Prestador.objects.create(
-                nome="Prestador Teste Completo",
+                nome="Renzo",
                 # ... outros campos do prestador ...
             )
 
@@ -60,8 +60,12 @@ def test_criar_prestador_completo():
             prestador.save()
 
             # Printando o prestador (o __str__ deve funcionar corretamente)
+            print("Nome do prestador criado: ")
             print(prestador)
+            print("Nome da alocação criada:")
             print(alocacao)
+            print("Presenças criadas:")
+            print(alocacao.presencas)
             
 
     except Exception as e:
