@@ -94,12 +94,8 @@ jobs:
           pytest relatorio_acompanhar_prestadores_testes.py 
           pytest cadastro_and_login_tests.py
 
-          cd..
-          cd..
-          cd..
-          cd encaminhamento
-          cd test
-          cd unit
+          cd ../../../ || exit 1
+          cd apps/encaminhamento/test/unit || exit 1
           pytest funcao_tests.py -s
           
       - name: SonarQube Cloud Scan
