@@ -61,10 +61,6 @@ def test_criar_usuario_e_subtipos():
         usuario = tipo_usuario(user=user)
         usuario.save()
         usuario_salvo = tipo_usuario.objects.get(id=usuario.id)
-        print("========")
-        print(usuario_salvo)
-        print(usuario_salvo.user)
-        print("==========")
         assert str(usuario_salvo) == expected_str
         user.delete() #remove o usuário após o teste
 
