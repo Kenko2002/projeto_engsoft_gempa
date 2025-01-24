@@ -10,8 +10,8 @@ from apps.socialentity.models import (
     EnumSexoBiologico, EnumPrestadorNaturalidade,
     EnumPrestadorCor, EnumPrestadorReligiao
 )
-from apps.atendimento.models import Execucao, Condicao, Presenca
-from apps.alocacao.models import Alocacao
+from apps.atendimento.models import Execucao, Condicao
+from apps.alocacao.models import Alocacao, Presenca
 from apps.encaminhamento.models import SetorInstitucional, Vaga, Funcao
 
 
