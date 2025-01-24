@@ -73,10 +73,10 @@ def test_criar_prestador_completo():
                     print(f"          Presença: {presenca} ")
 
         try:
-            url = "http://localhost:8000/area-tecnico/condicao/"
-            response = requests.get(url)
+            url = "/atendimento/condicao/" 
+            response = client.get(url)
             response.raise_for_status()
-            print(response.text) #imprime a resposta da requisição
+            print(response.json() ) #imprime a resposta da requisição
             assert len(response.json()) > 0, "A resposta da API está vazia" #verifica se a resposta não está vazia
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
