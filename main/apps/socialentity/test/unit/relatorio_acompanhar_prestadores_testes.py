@@ -17,7 +17,7 @@ from apps.encaminhamento.models import SetorInstitucional, Vaga, Funcao
 
 
 @pytest.mark.django_db
-def test_criar_prestador_completo():
+def test_criar_prestador_completo(client):
     with transaction.atomic():  # Para garantir que tudo seja criado ou nada
         # Criando entidades relacionadas
         funcao = Funcao.objects.create(nome="Função Teste")
