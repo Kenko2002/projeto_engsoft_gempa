@@ -76,7 +76,7 @@ def test_criar_prestador_completo(client):
             url = "/area-tecnico/condicao/" 
             response = client.get(url)
             print(response.json() ) #imprime a resposta da requisição
-            print(response.json().total_horas_cumpridas)
+            print(response.json()[0].total_horas_cumpridas)
             assert response.json()[0].total_horas_cumpridas == "50h 0min", "Horas cumpridas não correspondem ao esperado"
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
