@@ -730,6 +730,6 @@ class AreaAdminCondicaoDetailView(APIView):
             })
 
         if resultado.length==0:
-            return Response("data":[condicao])
+            return Response(condicao)
         return Response(resultado, status=status.HTTP_200_OK)
 #=============FIM AREA DO ADMIN API VIEW=================#
