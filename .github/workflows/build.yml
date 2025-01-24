@@ -90,7 +90,7 @@ jobs:
           cd test
           cd unit
           pip install pytest pytest-json-report pytest-metadata pytest-django
-          pytest entity_create_test.py -s
+          pytest entities_crud_test.py -s
           pytest relatorio_acompanhar_prestadores_testes.py -s
           
       - name: SonarQube Cloud Scan
