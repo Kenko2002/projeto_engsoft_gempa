@@ -728,9 +728,6 @@ class AreaAdminCondicaoDetailView(APIView):
                 "alocacoes": alocacao_data,
                 "total_horas_cumpridas": str(total_horas_em_horas)+"h "+str(total_minutos)+"min",
             })
-
-        if resultado.length==0:
-            resultado.append("condicao_id",condicao.id)
-            return Response(resultado, status=status.HTTP_200_OK)
+            
         return Response(resultado, status=status.HTTP_200_OK)
 #=============FIM AREA DO ADMIN API VIEW=================#
