@@ -9,9 +9,11 @@ import random
 
 
 
-from apps.encaminhamento.models import (
-    Funcao
-)
+from apps.encaminhamento.models import Instituicao
+from apps.encaminhamento.models import UnidadeOrganizacional
+from apps.encaminhamento.models import SetorInstitucional
+from apps.encaminhamento.models import Vaga
+from apps.encaminhamento.models import Funcao
 
 
 
