@@ -43,6 +43,9 @@ def test_criar_prestador_completo():
                 # ... outros campos da alocação ...
             )
 
+            condicao.alocacoes.add(alocacao)
+            condicao.save()
+
             # Adicionando presenças (5h cada, totalizando 50h - metade da condição)
 
             #checkin_inicial = make_aware(localtime().replace(hour=8, minute=0, second=0, microsecond=0)) #checkin as 8 da manha
