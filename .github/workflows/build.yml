@@ -96,6 +96,10 @@ jobs:
 
           cd ../../../ 
           cd encaminhamento/test/unit 
+          pytest entities_crud_test.py 
+
+          cd ../../../ 
+          cd atendimento/test/unit 
           pytest entities_crud_test.py -s
           
       - name: SonarQube Cloud Scan
