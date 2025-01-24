@@ -729,5 +729,7 @@ class AreaAdminCondicaoDetailView(APIView):
                 "total_horas_cumpridas": str(total_horas_em_horas)+"h "+str(total_minutos)+"min",
             })
 
+        if resultado.length==0:
+            return Response("data":[condicao])
         return Response(resultado, status=status.HTTP_200_OK)
 #=============FIM AREA DO ADMIN API VIEW=================#
