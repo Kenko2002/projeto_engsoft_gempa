@@ -73,7 +73,7 @@ def test_criar_prestador_completo(client):
                     print(f"          Presença: {presenca} ")
 
         try:
-            url = "/atendimento/condicao/" 
+            url = "/area-tecnico/condicao/" 
             response = client.get(url)
             print(response.json() ) #imprime a resposta da requisição
             assert len(response.json()) > 0, "A resposta da API está vazia" #verifica se a resposta não está vazia
