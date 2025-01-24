@@ -93,6 +93,14 @@ jobs:
           pytest entities_crud_test.py 
           pytest relatorio_acompanhar_prestadores_testes.py 
           pytest cadastro_and_login_tests.py
+
+          cd..
+          cd..
+          cd..
+          cd encaminhamento
+          cd test
+          cd unit
+          pytest funcao_tests.py -s
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
