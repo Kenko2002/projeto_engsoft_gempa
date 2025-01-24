@@ -92,7 +92,7 @@ jobs:
           pip install pytest pytest-json-report pytest-metadata pytest-django
           pytest entities_crud_test.py 
           pytest relatorio_acompanhar_prestadores_testes.py 
-          pytest login_tests.py -s
+          pytest cadastro_and_login_tests.py
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
