@@ -71,7 +71,7 @@ def test_criar_prestador_completo():
                 print(f"      Alocação: {alocacao_obj}")
                 print(f"        Vaga: {alocacao_obj.vaga}")
                 for presenca in alocacao_obj.presencas.all():
-                    print(f"          Presença: {presenca} )
+                    print(f"          Presença: {presenca} ")
 
         try:
             url = "http://localhost:8000/area-tecnico/condicao/"
