@@ -49,8 +49,11 @@ def test_criar_prestador_completo():
 
             for i in range(10):
                 checkin = checkin_inicial + timedelta(days=i)
-                checkout = checkin + timedelta(hours=5) #checkout as 13
-                Presenca.objects.create(alocacao=alocacao, checkin=checkin, checkout=checkout)
+                checkout = checkin + timedelta(hours=5)  # checkout às 13h
+                # Cria a presença
+                presenca = Presenca.objects.create(checkin=checkin, checkout=checkout)
+                # Adiciona a presença à alocação
+                alocacao.presencas.add(presenca)
             alocacao.save()
             
             # Relacionando tudo
