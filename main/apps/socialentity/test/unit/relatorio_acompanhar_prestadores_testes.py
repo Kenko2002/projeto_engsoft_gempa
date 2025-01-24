@@ -76,7 +76,8 @@ def test_criar_prestador_completo(client):
             url = "/area-tecnico/condicao/" 
             response = client.get(url)
             print(response.json() ) #imprime a resposta da requisição
-            assert len(response.json()) > 0, "A resposta da API está vazia" #verifica se a resposta não está vazia
+            print(response.total_horas_cumpridas)
+            assert total_horas_cumpridas == "50h 0min", "Horas cumpridas não correspondem ao esperado"
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
             pytest.fail(f"Erro na requisição: {e}") #falha o teste explicitamente
