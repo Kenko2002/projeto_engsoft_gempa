@@ -64,14 +64,16 @@ def test_criar_prestador_completo():
 
         # Printando o prestador (o __str__ deve funcionar corretamente)
         print(f"Prestador: {prestador} (ID: {prestador.id})")
-        print(f"  Execução: {execucao} (ID: {execucao.id}, Prestador ID: {execucao.prestador_id})")
-        for condicao_obj in prestador.execucao.condicoes:
-            print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
-            for alocacao_obj in condicao_obj.alocacoes: # Ajustado
-                print(f"      Alocação: {alocacao_obj}")
-                print(f"        Vaga: {alocacao_obj.vaga}")
-                for presenca in alocacao_obj.presencas.all():
-                    print(f"          Presença: {presenca} ")
+        
+        for execucao_obj in prestador.execucoes:
+            print(f"  Execução: {execucao_obj}")
+            for condicao_obj in execucao_obj.condicoes:
+                print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
+                for alocacao_obj in condicao_obj.alocacoes: # Ajustado
+                    print(f"      Alocação: {alocacao_obj}")
+                    print(f"        Vaga: {alocacao_obj.vaga}")
+                    for presenca in alocacao_obj.presencas.all():
+                        print(f"          Presença: {presenca} ")
 
         try:
             url = "http://localhost:8000/area-tecnico/condicao/"
