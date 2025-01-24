@@ -64,9 +64,9 @@ def test_criar_prestador_completo():
 
         
         print(f"  Prestador:{execucao.prestador} Execução:{execucao}")
-        for condicao_obj in execucao.condicoes:
+        for condicao_obj in execucao.condicoes.all():
             print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
-            for alocacao_obj in condicao_obj.alocacoes: # Ajustado
+            for alocacao_obj in condicao_obj.alocacoes.all(): 
                 print(f"      Alocação: {alocacao_obj}")
                 print(f"        Vaga: {alocacao_obj.vaga}")
                 for presenca in alocacao_obj.presencas.all():
