@@ -82,7 +82,7 @@ jobs:
           cd main
           python manage.py makemigrations
           python manage.py check
-          python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000 &
+          python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000  --error-logfile - &
 
 
           #cd apps
@@ -106,7 +106,7 @@ jobs:
           #cd alocacao/test/unit 
           #pytest entities_crud_test.py -s
 
-          python manage.py test --coverage --cov-report xml:../coverage.xml
+          python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
