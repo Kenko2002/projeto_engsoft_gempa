@@ -35,6 +35,7 @@ def test_criar_prestador_completo():
         condicao = Condicao.objects.create(horas_maximas=100)  # 100 horas na condição
         execucao = Execucao.objects.create(prestador=prestador)
         execucao.condicoes.add(condicao)
+        prestador.execucoes.add(execucao)
 
         alocacao = Alocacao.objects.create(
             vaga=vaga,
