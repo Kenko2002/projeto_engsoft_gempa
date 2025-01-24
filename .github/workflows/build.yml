@@ -89,8 +89,7 @@ jobs:
 
 
 
-          #python manage.py test apps.socialentity.tests
-          python manage.py test /main/apps/socialentity/tests/
+          python manage.py test 
 
 
           #cd apps
