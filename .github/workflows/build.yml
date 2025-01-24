@@ -96,7 +96,7 @@ jobs:
 
           cd ../../../ 
           cd encaminhamento/test/unit 
-          pytest funcao_tests.py -s
+          pytest entities_crud_test.py -s
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
