@@ -1,6 +1,7 @@
 
 
 import pytest
+import requests
 from django.db import IntegrityError, transaction
 from django.contrib.auth.models import User
 from django.utils.timezone import localtime, make_aware, timedelta
