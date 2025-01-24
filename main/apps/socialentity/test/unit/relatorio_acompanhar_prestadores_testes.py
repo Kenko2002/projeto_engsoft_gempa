@@ -35,7 +35,6 @@ def test_criar_prestador_completo():
         condicao = Condicao.objects.create(horas_maximas=100)  # 100 horas na condição
         execucao = Execucao.objects.create(prestador=prestador)
         execucao.condicoes.add(condicao)
-        prestador.execucoes.add(execucao)
 
         alocacao = Alocacao.objects.create(
             vaga=vaga,
@@ -63,12 +62,10 @@ def test_criar_prestador_completo():
         # Relacionando tudo
         prestador.save()
 
-        # Printando o prestador (o __str__ deve funcionar corretamente)
-        print(f"Prestador: {prestador} (ID: {prestador.id})")
         
-        for execucao_obj in prestador.execucoes:
-            print(f"  Execução: {execucao_obj}")
-            for condicao_obj in execucao_obj.condicoes:
+        for prestador_obj in execucao.prestador:
+            print(f"  Prestador:{prestador_obj} Execução:{execucao}")
+            for condicao_obj in execucao.condicoes:
                 print(f"    Condição: {condicao_obj} (ID: {condicao_obj.id}")
                 for alocacao_obj in condicao_obj.alocacoes: # Ajustado
                     print(f"      Alocação: {alocacao_obj}")
