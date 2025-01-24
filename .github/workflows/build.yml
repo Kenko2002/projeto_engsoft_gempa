@@ -89,8 +89,7 @@ jobs:
 
 
 
-          python manage.py test apps.socialentity.tests.test_relatorio_acompanhar_prestador 
-
+          python manage.py test apps.socialentity
 
 
 
