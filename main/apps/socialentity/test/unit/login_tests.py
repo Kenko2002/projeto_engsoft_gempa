@@ -19,7 +19,7 @@ def test_cadastro_and_login(client):
             "last_name": "Sobrenome",
         }
 
-        url = reverse("cadastro_tecnico")  # Use reverse para obter a URL
+        url = reverse("/cadastro/tecnico/")  # Use reverse para obter a URL
 
         response = client.post(url, data=json.dumps(cadastro_data), content_type="application/json")
 
