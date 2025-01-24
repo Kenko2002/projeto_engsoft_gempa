@@ -13,3 +13,6 @@ def test_criar_telefone():
     assert telefone_salvo.numero == "987654321"
     assert telefone_salvo.ddd == "55"
     assert str(telefone_salvo) == "+55 987654321"
+    
+    # Exibindo o telefone no console
+    print(f"Telefone salvo: ID={telefone_salvo.id}, DDD={telefone_salvo.ddd}, Número={telefone_salvo.numero}")
