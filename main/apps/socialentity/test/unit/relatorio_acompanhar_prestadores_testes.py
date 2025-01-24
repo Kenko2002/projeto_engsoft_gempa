@@ -44,8 +44,8 @@ def test_criar_prestador_completo():
 
             # Adicionando presenças (5h cada, totalizando 50h - metade da condição)
 
-            checkin_inicial = make_aware(localtime().replace(hour=8, minute=0, second=0, microsecond=0)) #checkin as 8 da manha
-
+            #checkin_inicial = make_aware(localtime().replace(hour=8, minute=0, second=0, microsecond=0)) #checkin as 8 da manha
+            checkin_inicial = localtime().replace(hour=8, minute=0, second=0, microsecond=0)
 
             for i in range(10):
                 checkin = checkin_inicial + timedelta(days=i)
