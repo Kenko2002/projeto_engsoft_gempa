@@ -15,6 +15,7 @@ class Instituicao(EntidadeSocial):
     )
     
     class Meta:
+        app_label = 'encaminhamento'
         db_table = 'instituicao'
 
     def __str__(self):
@@ -36,6 +37,7 @@ class UnidadeOrganizacional(EntidadeSocial):
     )
 
     class Meta:
+        app_label = 'encaminhamento'
         db_table = 'unidadeorganizacional'
 
     def __str__(self):
@@ -59,6 +61,7 @@ class SetorInstitucional(PolymorphicModel, models.Model):
         )
     
     class Meta:
+        app_label = 'encaminhamento'
         db_table = 'setorinstitucional'
 
     def __str__(self):
@@ -72,6 +75,7 @@ class Vaga(PolymorphicModel, models.Model):
     funcao = models.ForeignKey('Funcao', blank=True, null=True, on_delete=models.CASCADE, related_name="funcao_%(class)s")
 
     class Meta:
+        app_label = 'encaminhamento'
         db_table = 'vaga'
 
     def __str__(self):
@@ -85,6 +89,7 @@ class Funcao(PolymorphicModel, models.Model):
     nome = models.CharField(max_length=300, null=True, blank=True)
 
     class Meta:
+        app_label = 'encaminhamento'
         db_table = 'funcao'
 
     def __str__(self):
