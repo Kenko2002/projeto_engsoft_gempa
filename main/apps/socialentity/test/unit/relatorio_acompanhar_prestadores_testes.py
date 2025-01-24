@@ -73,7 +73,7 @@ def test_criar_prestador_completo():
                 response= requests.get(url)
                 response.raise_for_status()
                 print(response.text)
-            except requests.exceptions.RequestException as e
+            except requests.exceptions.RequestException as e:
                 print(f"Erro na requisição: {e}")
 
     except Exception as e:
