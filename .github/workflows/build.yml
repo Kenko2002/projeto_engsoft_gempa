@@ -92,7 +92,6 @@ jobs:
 
 
           pytest --cov=. --cov-report xml:coverage.xml
-          cd..
           
           #python manage.py test 
 
