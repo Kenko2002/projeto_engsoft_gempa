@@ -131,7 +131,7 @@ jobs:
           
           pwd 
           ls -lR 
-          
+          sudo rm -rf /tmp/*
 
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
