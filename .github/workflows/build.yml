@@ -201,7 +201,7 @@ jobs:
             -Dsonar.projectName=projeto_engsoft_gempa
             -Dsonar.projectVersion=1.0
             -Dsonar.python.coverage.reportPaths=test-reports/coverage.xml
-            -Dsonar.testExecutionReportPaths=main/junit-report.xml,main/pytest-report.xml
+            -Dsonar.testExecutionReportPaths=test-reports/junit-report.xml
 
 
 
