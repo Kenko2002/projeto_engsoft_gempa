@@ -118,7 +118,14 @@ jobs:
 
 
           #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
-          
+
+
+
+
+      - name: Set working directory and Run SonarCloud Scan
+        run: cd /home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa
+              sonar-scanner
+  
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
