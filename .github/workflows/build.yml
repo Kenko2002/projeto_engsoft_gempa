@@ -129,10 +129,13 @@ jobs:
 
 
           
-          pwd # Print the current working directory
+          pwd 
           cd main
+          pwd
+          ls -lR main
           cd apps
           ls -lR apps
+          
 
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
