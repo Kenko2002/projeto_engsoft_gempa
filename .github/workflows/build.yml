@@ -160,17 +160,20 @@ jobs:
           sudo chmod -R u+rwx main
 
 
-      - name: Run SonarQube Scan with Debugging
-        run: |
-          echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+      
+      #- name: Run SonarQube Scan with Debugging
+      #  run: |
+      #    echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
+      #  env:
+      #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           
           
       - name: SonarQube Cloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        #uses: SonarSource/sonarcloud-github-action@master
+        uses: sonarqube-scan-action@v4.1.0
         with:  # Add a "with" block for inputs
           projectBaseDir: main
         env:
