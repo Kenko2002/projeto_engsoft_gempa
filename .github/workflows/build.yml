@@ -180,7 +180,11 @@ jobs:
       - name: Display XML Reports
         run: |
           pwd
+          ls
           cd main
+          ls
+          cd apps
+          ls
           
           echo "Displaying coverage.xml content:"
           cat test-reports/coverage.xml
