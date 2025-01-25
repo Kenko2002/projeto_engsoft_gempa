@@ -205,8 +205,9 @@ jobs:
             -Dsonar.organization=kenko2002
             -Dsonar.projectName=projeto_engsoft_gempa
             -Dsonar.projectVersion=1.0
-            -Dsonar.tests=apps/alocacao/tests,apps/encaminhamento/tests,apps/atendimento/tests
-
+            -Dsonar.tests=main/apps/alocacao/tests,apps/encaminhamento/tests,apps/atendimento/tests
+            
+            
 
 
 
