@@ -92,7 +92,6 @@ jobs:
 
 
           pytest --cov=. --cov-report xml:coverage.xml
-          cat coverage.xml
           cd ..
 
           
@@ -176,6 +175,20 @@ jobs:
       #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
+
+      - name: Display XML Reports
+        run: |
+          echo "Displaying coverage.xml content:"
+          cat test-reports/coverage.xml
+      
+          echo "Displaying junit-report.xml content:"
+          cat test-reports/junit-report.xml
+      
+          echo "Displaying pytest-report.xml content:"
+          cat test-reports/pytest-report.xml
+          
+
       - name: SonarQube Report Import
         uses: SonarSource/sonarqube-scan-action@v4.1.0
         env:
@@ -189,6 +202,7 @@ jobs:
             -Dsonar.projectVersion=1.0
             -Dsonar.python.coverage.reportPaths=test-reports/coverage.xml
             -Dsonar.testExecutionReportPaths=test-reports/junit-report.xml,test-reports/pytest-report.xml
+
 
 
 
