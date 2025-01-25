@@ -123,8 +123,7 @@ jobs:
 
 
       - name: Set working directory and Run SonarCloud Scan
-        run: cd /home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa
-              sonar-scanner
+        run: cd "/home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa" && sonar-scanner
   
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
