@@ -128,6 +128,9 @@ jobs:
           #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
 
 
+          pwd # Print the current working directory
+          ls -lR apps
+
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:  # Add a "with" block for inputs
