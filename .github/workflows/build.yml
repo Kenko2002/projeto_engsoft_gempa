@@ -133,10 +133,7 @@ jobs:
           name: test-reports
           path: main/coverage.xml,main/*.xml,main/junit-report.xml,main/pytest-report.xml # Include all necessary reports
           
-      - uses: actions/download-artifact@v3
-        with:
-          name: test-reports
-          path: test-reports
+
 
       
 
