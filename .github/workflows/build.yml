@@ -137,6 +137,17 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:  # Add a "with" block for inputs
           projectBaseDir: main
+          extraProperties: |
+            sonar.exclusions=**/*.tmp, **/.DS_Store, **/.git*, **/tmp/**, **/systemd-private-*/, **/sys/**, **/proc/**
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+      - name: Run SonarQube Scan with Debugging
+        run: |
+          echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
