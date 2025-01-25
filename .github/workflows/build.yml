@@ -195,6 +195,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:   
           args: >
             -Dsonar.projectKey=Kenko2002_projeto_engsoft_gempa
             -Dsonar.organization=kenko2002
