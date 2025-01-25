@@ -180,28 +180,12 @@ jobs:
       - name: Get Test Report Files
         id: get-test-reports
         run: |
-          #pwd
-          #cd main
-          #ls
+          pwd
+          cd main
+          ls
 
 
-          junit_report_path="test-reports/junit-report.xml" # Path relative to artifacts
-          if [ -f "$junit_report_path" ]; then
-            echo "::set-output name=junit_report_exists::true"
-            echo "::set-output name=junit_report_paths::$junit_report_path"
-          else
-            echo "::warning::junit-report.xml not found. Skipping test report import."
-            echo "::set-output name=junit_report_exists::false"  # Explicitly set to false
-          fi
-
-          pytest_report_path="test-reports/pytest-report.xml" # Path relative to artifacts
-          if [ -f "$pytest_report_path" ]; then
-            echo "::set-output name=pytest_report_exists::true"
-            echo "::set-output name=pytest_report_paths::$pytest_report_path"
-          else
-            echo "::warning::pytest-report.xml not found. Skipping test report import."
-            echo "::set-output name=pytest_report_exists::false"  # Explicitly set to false
-          fi
+          
           
       
           
@@ -218,8 +202,7 @@ jobs:
             -Dsonar.organization=kenko2002
             -Dsonar.projectName=projeto_engsoft_gempa
             -Dsonar.projectVersion=1.0
-            -Dsonar.python.coverage.reportPaths=test-reports/coverage.xml
-            ${{ steps.get-test-reports.outputs.junit_report_exists == 'true' && '-Dsonar.testExecutionReportPaths=' + steps.get-test-reports.outputs.junit_report_paths || '' }}
+            -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.testExecutionReportPaths=junit-report.xml,pytest-report.xml
 
 
