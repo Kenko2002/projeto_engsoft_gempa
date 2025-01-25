@@ -120,12 +120,10 @@ jobs:
           #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
 
       - name: Debug - List files
-        run: ls -lR
+        run: pwr
 
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        with:
-          projectBaseDir: main
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
