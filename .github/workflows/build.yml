@@ -130,11 +130,7 @@ jobs:
 
           
           pwd 
-          cd main
-          pwd
-          ls -lR main
-          cd apps
-          ls -lR apps
+          ls -lR 
           
 
       - name: SonarQube Cloud Scan
