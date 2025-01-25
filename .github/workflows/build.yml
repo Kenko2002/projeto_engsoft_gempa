@@ -91,7 +91,7 @@ jobs:
 
 
 
-          pytest --cov=. --cov-report xml:coverage.xml
+          pytest --cov=. --cov-report xml:coverage.xml --junitxml=main/junit-report.xml 
           cd ..
 
           
@@ -132,7 +132,11 @@ jobs:
         with:
           name: test-reports
           path: main/coverage.xml,main/*.xml,main/junit-report.xml,main/pytest-report.xml # Include all necessary reports
-
+          
+      - uses: actions/download-artifact@v3
+        with:
+          name: test-reports
+          path: test-reports
 
       
 
@@ -176,20 +180,13 @@ jobs:
 
 
 
-      - name: Display XML Reports
+      - name: Get Test Report Files
+        id: get-test-reports
         run: |
-          pwd
-          ls
-          cd main
-          
-          echo "Displaying junit-report.xml content:"
-          cat junit-report.xml
-
-          echo "Displaying pytest-report.xml content:"
-          cat pytest-report.xml
-          
-          echo "Displaying coverage.xml content:"
-          cat coverage.xml
+          cd test-reports
+          files=$(find . -name "*.xml" -print0 | xargs -0 printf "%s,")
+          files=${files%,}
+          echo "report_files=$files" >> $GITHUB_OUTPUT
       
           
 
