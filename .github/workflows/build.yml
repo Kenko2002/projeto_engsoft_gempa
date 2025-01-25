@@ -121,8 +121,16 @@ jobs:
 
 
 
-
+      - name: Install SonarQube Scanner
+        shell: bash
+        run: |
+          curl -fsSL https://sonar.software/scanner-cli.zip > sonar-scanner.zip
+          unzip sonar-scanner.zip
+          export PATH=$PWD/sonar-scanner-*/bin:$PATH
+          
+          
       - name: Set working directory and Run SonarCloud Scan
+        shell: bash
         run: cd "/home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa" && sonar-scanner
   
       - name: SonarQube Cloud Scan
