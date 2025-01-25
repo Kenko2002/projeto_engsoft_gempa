@@ -120,18 +120,6 @@ jobs:
           #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
 
 
-
-      - name: Install SonarQube Scanner
-        shell: bash
-        run: |
-          curl -fsSL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux.zip -o sonar-scanner.zip
-          export PATH=$PWD/sonar-scanner-*/bin:$PATH
-          
-          
-      - name: Set working directory and Run SonarCloud Scan
-        shell: bash
-        run: cd "/home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa" && sonar-scanner
-  
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
