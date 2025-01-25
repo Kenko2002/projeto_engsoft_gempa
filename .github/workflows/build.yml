@@ -131,11 +131,10 @@ jobs:
       - uses: actions/upload-artifact@v3  # Upload reports as artifacts
         with:
           name: test-reports
-          path: main/coverage.xml,main/*.xml # Include all necessary reports
+          path: main/coverage.xml,main/*.xml,main/junit-report.xml,main/pytest-report.xml # Include all necessary reports
 
 
-
-
+      
 
 
 
@@ -182,18 +181,15 @@ jobs:
           pwd
           ls
           cd main
-          ls
-          cd apps
-          ls
           
           echo "Displaying coverage.xml content:"
-          cat test-reports/coverage.xml
+          cat coverage.xml
       
           echo "Displaying junit-report.xml content:"
-          cat test-reports/junit-report.xml
+          cat junit-report.xml
       
           echo "Displaying pytest-report.xml content:"
-          cat test-reports/pytest-report.xml
+          cat pytest-report.xml
           
 
       - name: SonarQube Report Import
