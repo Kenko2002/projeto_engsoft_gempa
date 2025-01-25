@@ -173,12 +173,13 @@ jobs:
           
       - name: SonarQube Cloud Scan
         #uses: SonarSource/sonarcloud-github-action@master
-        uses: SonarSource/sonarqube-scan-action@v4.1.0
+        uses: SonarSource/sonarqube-scan-action@v3.1.0
         with:  # Add a "with" block for inputs
           projectBaseDir: main
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_SCANNER_OPTS: -X 
 
 
 
