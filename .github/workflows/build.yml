@@ -184,7 +184,7 @@ jobs:
         id: get-test-reports
         run: |
           pwd
-          cd main
+          #cd main
           ls
 
 
@@ -204,8 +204,8 @@ jobs:
             -Dsonar.organization=kenko2002
             -Dsonar.projectName=projeto_engsoft_gempa
             -Dsonar.projectVersion=1.0
-            -Dsonar.python.coverage.reportPaths=main/coverage.xml
-            -Dsonar.testExecutionReportPaths=main/junit-report.xml
+            -Dsonar.python.coverage.reportPaths=../test-report/coverage.xml
+            -Dsonar.testExecutionReportPaths=../test-report/junit-report.xml
 
 
 
