@@ -128,8 +128,10 @@ jobs:
           #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
 
 
-          
 
+          pwd 
+          ls -lR 
+          sudo rm -rf /tmp/*
 
 
       - name: Kill Java Process
