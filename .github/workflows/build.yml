@@ -91,7 +91,7 @@ jobs:
 
 
 
-          pytest --cov=. --cov-report xml:coverage.xml --junitxml=main/junit-report.xml 
+          pytest --cov=. --cov-report xml:coverage.xml --junitxml=junit-report.xml 
           cd ..
 
           
