@@ -131,7 +131,7 @@ jobs:
       - uses: actions/upload-artifact@v3  # Upload reports as artifacts
         with:
           name: test-reports
-          path: main/coverage.xml,main/*.xml,main/junit-report.xml,main/pytest-report.xml # Include all necessary reports
+          path: main
           
       - uses: actions/download-artifact@v3  # <--- CRUCIAL STEP! Download before using.
         with:
