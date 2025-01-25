@@ -129,20 +129,9 @@ jobs:
 
 
 
-          #pwd 
-          #ls -lR 
-          #sudo rm -rf /tmp/*
 
 
-      - name: Kill Java Process
-        run: |
-          JPID=$(ps -e | grep java | awk '{print $1}')
-          if [ -n "$JPID" ]; then
-            echo "Killing Java process with PID $JPID"
-            kill -9 $JPID
-          else
-            echo "No Java process found"
-          fi
+
 
       # Etapa para limpar a pasta temporária
       - name: Clean Temp Folder
@@ -160,7 +149,6 @@ jobs:
           sudo chmod -R u+rwx main
 
 
-    
       
       #- name: Run SonarQube Scan with Debugging
       #  run: |
@@ -173,7 +161,7 @@ jobs:
           
       - name: SonarQube Cloud Scan
         #uses: SonarSource/sonarcloud-github-action@master
-        uses: SonarSource/sonarqube-scan-action@v3.1.0
+        uses: SonarSource/sonarqube-scan-action@v4.1.0
         with:  # Add a "with" block for inputs
           projectBaseDir: main
         env:
