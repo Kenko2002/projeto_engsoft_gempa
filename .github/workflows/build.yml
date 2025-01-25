@@ -132,6 +132,25 @@ jobs:
           pwd 
           ls -lR 
           sudo rm -rf /tmp/*
+
+
+
+      - name: Kill Java Process
+        run: |
+          JPID=$(ps -e | grep java | awk '{print $1}')
+          if [ -n "$JPID" ]; then
+            echo "Killing Java process with PID $JPID"
+            kill -9 $JPID
+          else
+            echo "No Java process found"
+          fi
+
+      # Etapa para limpar a pasta temporária
+      - name: Clean Temp Folder
+        run: |
+          echo "Cleaning temp folder..."
+          sudo rm -rf /tmp/*
+          echo "Temp folder cleaned."
           
       - name: Check Directory Permissions
         run: |
@@ -141,6 +160,13 @@ jobs:
         run: |
           sudo chmod -R u+rwx main
         
+          
+      - name: Run SonarQube Scan with Debugging
+        run: |
+          echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -152,12 +178,6 @@ jobs:
 
 
 
-      - name: Run SonarQube Scan with Debugging
-        run: |
-          echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
