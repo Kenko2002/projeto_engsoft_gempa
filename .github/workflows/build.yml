@@ -182,14 +182,15 @@ jobs:
           ls
           cd main
           
+          echo "Displaying junit-report.xml content:"
+          cat junit-report.xml
+
+          echo "Displaying pytest-report.xml content:"
+          cat pytest-report.xml
+          
           echo "Displaying coverage.xml content:"
           cat coverage.xml
       
-          echo "Displaying junit-report.xml content:"
-          cat junit-report.xml
-      
-          echo "Displaying pytest-report.xml content:"
-          cat pytest-report.xml
           
 
       - name: SonarQube Report Import
