@@ -129,9 +129,6 @@ jobs:
 
 
           
-          pwd 
-          ls -lR 
-          sudo rm -rf /tmp/*
 
 
 
@@ -160,13 +157,6 @@ jobs:
         run: |
           sudo chmod -R u+rwx main
         
-          
-      - name: Run SonarQube Scan with Debugging
-        run: |
-          echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
