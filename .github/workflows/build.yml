@@ -91,7 +91,7 @@ jobs:
 
 
 
-          pytest --cov=. --cov-report xml:coverage.xml
+          sudo pytest --cov=. --cov-report xml:coverage.xml
           cd ..
           
           #python manage.py test 
@@ -132,7 +132,16 @@ jobs:
           pwd 
           ls -lR 
           sudo rm -rf /tmp/*
-
+          
+      - name: Check Directory Permissions
+        run: |
+          ls -ld main
+          ls -l main
+      - name: Set Directory Permissions
+        run: |
+          sudo chmod -R u+rwx main
+        
+          
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:  # Add a "with" block for inputs
