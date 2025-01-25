@@ -175,6 +175,19 @@ jobs:
       #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: SonarQube Report Import
+        uses: SonarSource/sonarqube-scan-action@v4.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=Kenko2002_projeto_engsoft_gempa
+            -Dsonar.organization=kenko2002
+            -Dsonar.projectName=projeto_engsoft_gempa
+            -Dsonar.projectVersion=1.0
+            -Dsonar.python.coverage.reportPaths=test-reports/coverage.xml
+            -Dsonar.testExecutionReportPaths=test-reports/*.xml 
 
 
 
