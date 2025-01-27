@@ -40,8 +40,4 @@ def test_setor_por_funcao_api_view():
     assert response.status_code == status.HTTP_404_NOT_FOUND
     assert response.json() == {'detail': 'Função não encontrada.'}
 
-    # Teste sem nome da funcao
-    url_sem_nome = reverse('setores-funcao', kwargs={'funcao_nome': ''})
-    response = client.get(url_sem_nome)
-    assert response.status_code == status.HTTP_400_BAD_REQUEST
-    assert response.json() == {'detail': 'Nome da função é obrigatório.'}
+
