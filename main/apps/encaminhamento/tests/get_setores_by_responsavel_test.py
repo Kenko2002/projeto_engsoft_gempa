@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.db import transaction
 from apps.socialentity.models import Responsavel # Importe o modelo Responsavel
 from apps.encaminhamento.models import SetorInstitucional
+from apps.encaminhamento.serializers import SetorInstitucionalSerializer
 
 @pytest.mark.django_db
 def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo para client
