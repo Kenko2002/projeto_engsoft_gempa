@@ -9,7 +9,7 @@ from apps.encaminhamento.models import SetorInstitucional
 from apps.encaminhamento.serializers import SetorInstitucionalSerializer
 
 @pytest.mark.django_db
-def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo para client
+def test_cadastro__responsavel_and_get_setor_by_responsavel(client: APIClient):  # Adicione tipo para client
     with transaction.atomic():
         cadastro_data = {
             "identificacao": "12345678901",  # CPF - Único
