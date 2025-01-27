@@ -39,8 +39,8 @@ def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo par
 
         print(response_login.json())
         responsavel_id=response_login.json()["id"]
-        setor1 = SetorInstitucional.objects.create(nome="Setor 1", responsavel=responsavel)
-        setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel=responsavel)
+        setor1 = SetorInstitucional.objects.create(nome="Setor 1", responsavel_id=responsavel_id)
+        setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel_id=responsavel_id)
 
         print("RESPONSAVEL_ID")
         print(responsavel_id)
