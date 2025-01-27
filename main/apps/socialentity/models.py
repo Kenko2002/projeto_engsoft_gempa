@@ -86,7 +86,7 @@ class Usuario(EntidadeSocial,PolymorphicModel, models.Model):
         db_table = 'usuario'
 
     def __str__(self):
-        return self.user if self.user else "Usuário sem nome"
+        return self.user.username if self.user else "Usuário sem nome"
 
 
 class Prestador(EntidadeSocial):
@@ -125,7 +125,7 @@ class Tecnico(Usuario):
         db_table = 'tecnico'
 
     def __str__(self):
-        return f"Técnico: {self.user}" if self.user else "Técnico sem nome"
+        return f"Técnico: {self.user.username}" if self.user.username else "Técnico sem nome"
 
 
 class Fiscal(Usuario):
@@ -135,7 +135,7 @@ class Fiscal(Usuario):
         db_table = 'fiscal'
 
     def __str__(self):
-        return f"Fiscal: {self.user}" if self.user else "Fiscal sem nome"
+        return f"Fiscal: {self.user.username}" if self.user.username else "Fiscal sem nome"
 
 
 class Coordenador(Usuario):
@@ -145,7 +145,7 @@ class Coordenador(Usuario):
         db_table = 'coordenador'
 
     def __str__(self):
-        return f"Coordenador: {self.user}" if self.user else "Coordenador sem nome"
+        return f"Coordenador: {self.user.username}" if self.user.username else "Coordenador sem nome"
 
 
 class Responsavel(Usuario):
@@ -155,4 +155,4 @@ class Responsavel(Usuario):
         db_table = 'responsavel'
 
     def __str__(self):
-        return f"Responsável: {self.user}" if self.user else "Responsável sem nome"
+        return f"Responsável: {self.user.username}" if self.user.username else "Responsável sem nome"
