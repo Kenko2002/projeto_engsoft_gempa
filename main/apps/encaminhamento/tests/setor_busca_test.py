@@ -86,8 +86,8 @@ def test_get_setor_by_cidade():
     cidade = "Test City"
     endereco1 = Endereco.objects.create(cidade=cidade)
     endereco2 = Endereco.objects.create(cidade=cidade)
-    unidade1 = UnidadeOrganizacional.objects.create(nome="Unidade 1")
-    unidade2 = UnidadeOrganizacional.objects.create(nome="Unidade 2")
+    unidade1 = UnidadeOrganizacional.objects.create(nome="Unidade 1",hora_abertura="06:00:00",hora_fechamento="18:00:00")
+    unidade2 = UnidadeOrganizacional.objects.create(nome="Unidade 2",hora_abertura="06:00:00",hora_fechamento="18:00:00")
     setor1 = SetorInstitucional.objects.create(nome="Setor 1")
     setor2 = SetorInstitucional.objects.create(nome="Setor 2")
 
