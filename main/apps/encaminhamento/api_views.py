@@ -215,7 +215,7 @@ from .models import Instituicao, UnidadeOrganizacional, SetorInstitucional, Vaga
 from apps.socialentity.models import Endereco,Telefone
 
 #============CADASTRO DE INSTITUIÇÃO=============#
-
+#codigo morto, não é usado pra nada nessa versão.
         
 class UseCaseIncluirInstituicaoComUnidadeSetorEVagaAPIView(APIView):
     
