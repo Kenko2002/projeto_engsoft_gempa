@@ -31,7 +31,7 @@ def test_vagas_disponiveis_por_setor_api_view():
     setor.vagas.add(vaga1, vaga2, vaga3)
 
     # Cria uma alocação para uma das vagas
-   alocacao1 = Alocacao.objects.create(vaga=vaga1, tecnico=None) 
+    alocacao1 = Alocacao.objects.create(vaga=vaga1, tecnico=None) 
 
 
     url = f'/setor/{setor.id}/getvagasdisponiveis/'  # Substitua 'vagas-disponiveis-por-setor' pelo nome da sua URL
