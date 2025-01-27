@@ -36,3 +36,19 @@ def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo par
 
         assert response_login.status_code == status.HTTP_200_OK
         assert "token" in response_login.json()
+
+        
+        responsavel_id=response_login.id
+        setor1 = SetorInstitucional.objects.create(nome="Setor 1", responsavel=responsavel)
+        setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel=responsavel)
+
+        print("RESPONSAVEL_ID")
+        print(responsavel_id)
+        
+        url = f"/api/setores-institucionais/responsavel/{responsavel_id}/"
+        response = client.get(url)
+    
+        assert response.status_code == status.HTTP_200_OK
+    
+        expected_data = SetorInstitucionalSerializer([setor1, setor2], many=True).data
+        assert response.json() == expected_data
