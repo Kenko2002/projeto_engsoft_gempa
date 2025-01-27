@@ -6,8 +6,8 @@ from django.urls import reverse
 from django.db import transaction
 
 # Importe os modelos e serializers necessários
-from apps.seu_app.models import SetorInstitucional, Vaga, Alocacao # Substitua 'seu_app' pelo nome do seu app
-from apps.seu_app.serializers import VagaVagasDiponiveisSerializer # Substitua 'seu_app' pelo nome do seu app
+from apps.encaminhamento.models import SetorInstitucional, Vaga, Alocacao # Substitua 'seu_app' pelo nome do seu app
+from apps.encaminhamento.serializers import VagaVagasDiponiveisSerializer # Substitua 'seu_app' pelo nome do seu app
 
 
 @pytest.mark.django_db
