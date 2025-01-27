@@ -18,17 +18,20 @@ def test_vagas_disponiveis_por_setor_api_view():
     """
     client = APIClient()
 
+    funcao1 = Funcao.objects.create(nome="Analista de Dados")
+    funcao2 = Funcao.objects.create(nome="Desenvolvedor Frontend")
+
     # Cria um setor
     setor = SetorInstitucional.objects.create(nome="Setor de Teste")
 
     # Cria algumas vagas para o setor
-    vaga1 = Vaga.objects.create(setor=setor, nome="Vaga 1")
-    vaga2 = Vaga.objects.create(setor=setor, nome="Vaga 2")
-    vaga3 = Vaga.objects.create(setor=setor, nome="Vaga 3")
-
+    vaga1 = Vaga.objects.create(funcao=funcao1) # Adicionei 'titulo', supondo que sua Vaga tem este campo.
+    vaga2 = Vaga.objects.create(funcao=funcao2) 
+    vaga3 = Vaga.objects.create(funcao=funcao1)
+    setor.vagas.add(vaga1, vaga2, vaga3)
 
     # Cria uma alocação para uma das vagas
-    Alocacao.objects.create(vaga=vaga1)
+   alocacao1 = Alocacao.objects.create(vaga=vaga1, tecnico=None) 
 
 
     url = f'/setor/{setor.id}/getvagasdisponiveis/'  # Substitua 'vagas-disponiveis-por-setor' pelo nome da sua URL
