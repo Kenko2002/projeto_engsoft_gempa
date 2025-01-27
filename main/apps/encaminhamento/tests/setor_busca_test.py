@@ -2,9 +2,8 @@ import pytest
 from rest_framework.test import APIClient
 from rest_framework import status
 from django.urls import reverse
-from apps.encaminhamento.models import SetorInstitucional, Vaga, Funcao
+from apps.encaminhamento.models import SetorInstitucional, Vaga, Funcao,UnidadeOrganizacional
 from apps.socialentity.models import Responsavel, Endereco # Assuming you have these models
-from apps.atendimento.models import UnidadeOrganizacional # Assuming this is your model
 import json
 from django.db import transaction
 
