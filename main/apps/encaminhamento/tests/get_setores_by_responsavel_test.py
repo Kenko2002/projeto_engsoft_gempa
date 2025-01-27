@@ -31,7 +31,7 @@ def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo par
             "password": cadastro_data["password"],
         }
 
-        url_login =  "/login"  # Ou o nome da sua URL de login se diferente
+        url_login =  "/login/"  # Ou o nome da sua URL de login se diferente
         response_login = client.post(url_login, data=json.dumps(login_data), content_type="application/json")
 
         assert response_login.status_code == status.HTTP_200_OK
