@@ -33,6 +33,7 @@ def test_avaliar_prestador_api_view():
         ]
     }
 
+    print(alocacao.id)
     url= f'/alocacao/avaliar-prestador/{alocacao.id}/'
 
     # Teste de atualização bem-sucedida
