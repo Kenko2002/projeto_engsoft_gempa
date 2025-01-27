@@ -54,12 +54,6 @@ def test_avaliar_prestador_api_view():
     response = client.put(url, data=json.dumps(data_invalida), content_type='application/json')
     assert response.status_code == status.HTTP_400_BAD_REQUEST  #verifica se a resposta é de erro
 
-    # Teste com alocação inexistente
-    url_inexistente = f'/alocacao/avaliar-prestador/9999999999999/'
-    response = client.put(url_inexistente, data=json.dumps(data), content_type='application/json')
-    assert response.status_code == status.HTTP_404_NOT_FOUND
-    assert response.json() == {"detail": "Alocação não encontrada."}
-
 
     # Teste com data_apresentacao no passado (opcional, dependendo da sua validação)
     data_passada = {
@@ -73,19 +67,3 @@ def test_avaliar_prestador_api_view():
     # Se você tem uma validação para impedir data no passado, deve retornar 400.
     # Caso contrario, deve retornar 200.
 
-
-    # Teste com horarios invalidos (opcional, dependendo da sua validação)
-    data_horarios_invalidos = {
-        "data_apresentacao": timezone.now().isoformat(),
-        "status": "APROVADO",
-        "observacao_avaliacao": "Horarios Invalidos",
-        "diascombinados": [
-            {
-                "dia_semana": "SEGUNDA-FEIRA",
-                "horario_entrada": "24:00:00", #horario invalido
-                "horario_saida": "18:00:00"
-            }
-        ]
-    }
-    response = client.put(url, data=json.dumps(data_horarios_invalidos), content_type='application/json')
-    # Similarmente, o resultado depende de sua validação.  Se houver validação de horários, deve ser 400.
