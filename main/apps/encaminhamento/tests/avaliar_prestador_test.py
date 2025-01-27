@@ -5,7 +5,7 @@ from rest_framework import status
 from django.urls import reverse
 from django.utils import timezone
 from apps.alocacao.models import Alocacao, DiaCombinado
-from apps.alocacao.serializers import AvaliacaoSerializer #Assumindo que este é o serializer correto
+from apps.alocacao.serializers import AlocacaoSerializer #Assumindo que este é o serializer correto
 from apps.encaminhamento.models import Vaga #Assumindo que a vaga é necessaria
 from datetime import datetime
 
