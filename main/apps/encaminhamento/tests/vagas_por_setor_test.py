@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.db import transaction
 
 # Importe os modelos e serializers necessários
-from apps.encaminhamento.models import SetorInstitucional, Vaga
+from apps.encaminhamento.models import SetorInstitucional, Vaga,Funcao
 from apps.encaminhamento.serializers import VagaVagasDiponiveisSerializer # Substitua 'seu_app' pelo nome do seu app
 from apps.alocacao.models import Alocacao
 
