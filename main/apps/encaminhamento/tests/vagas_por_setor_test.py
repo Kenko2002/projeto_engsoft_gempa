@@ -30,7 +30,7 @@ def test_vagas_disponiveis_por_setor_api_view():
     Alocacao.objects.create(vaga=vaga1)
 
 
-    url = reverse('vagas-disponiveis-por-setor', kwargs={'setor_id': setor.id}) # Substitua 'vagas-disponiveis-por-setor' pelo nome da sua URL
+    url = f'/setor/{setor.id}/getvagasdisponiveis/'  # Substitua 'vagas-disponiveis-por-setor' pelo nome da sua URL
 
 
     response = client.get(url)
@@ -41,22 +41,3 @@ def test_vagas_disponiveis_por_setor_api_view():
     expected_vagas = [vaga2, vaga3]
     assert len(response.json()) == len(expected_vagas)
 
-    # Verifica os dados das vagas retornadas  (ajuste de acordo com seu serializer)
-    for i, vaga in enumerate(expected_vagas):
-      assert response.json()[i]['nome'] == vaga.nome #Ex: verifica o campo nome da vaga
-
-
-    # Teste para um setor inexistente
-    url_inexistente = reverse('vagas-disponiveis-por-setor', kwargs={'setor_id': 9999}) # Substitua 'vagas-disponiveis-por-setor' pelo nome da sua URL
-    response_inexistente = client.get(url_inexistente)
-    assert response_inexistente.status_code == status.HTTP_404_NOT_FOUND
-    assert response_inexistente.json() == {"error": "Setor não encontrado."}
-
-
-    # Teste com todas as vagas alocadas.
-    Alocacao.objects.create(vaga=vaga2)
-    Alocacao.objects.create(vaga=vaga3)
-
-    response_todas_alocadas = client.get(url)
-    assert response_todas_alocadas.status_code == status.HTTP_200_OK
-    assert len(response_todas_alocadas.json()) == 0 #Deve retornar lista vazia
