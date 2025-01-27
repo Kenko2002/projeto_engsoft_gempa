@@ -78,12 +78,6 @@ def test_get_setor_by_bairro():
 
 
 
-
-
-
-
-'''
-
 @pytest.mark.django_db
 def test_get_setor_by_cidade():
     client = APIClient()
@@ -96,11 +90,14 @@ def test_get_setor_by_cidade():
     unidade2 = UnidadeOrganizacional.objects.create(nome="Unidade 2")
     setor1 = SetorInstitucional.objects.create(nome="Setor 1")
     setor2 = SetorInstitucional.objects.create(nome="Setor 2")
+
+    # Correctly add Enderecos to Unidades using .add()
     unidade1.enderecos.add(endereco1)
     unidade2.enderecos.add(endereco2)
+
+    # Correctly add Setores to Unidades (assuming this is also ManyToMany)
     unidade1.setores_institucionais.add(setor1)
     unidade2.setores_institucionais.add(setor2)
-
 
     url = f"/alocacao/setor/cidade/{cidade}/"
 
@@ -113,4 +110,5 @@ def test_get_setor_by_cidade():
     url = "/alocacao/setor/cidade/NonExistentCity/"
     response = client.get(url)
     assert response.status_code == status.HTTP_404_NOT_FOUND
-'''
+
+
