@@ -25,7 +25,7 @@ def test_setor_por_funcao_api_view():
     setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel=None)
 
     # URL para teste
-    url = reverse('alocacao_setor_funcao_read', kwargs={'funcao_nome': 'Analista de Dados'}) # 'setor-por-funcao' deve ser o nome da sua URL
+    url = reverse('setores-funcao', kwargs={'funcao_nome': 'Analista de Dados'}) # 'setor-por-funcao' deve ser o nome da sua URL
 
 
 
@@ -41,7 +41,7 @@ def test_setor_por_funcao_api_view():
     assert response.json() == {'detail': 'Função não encontrada.'}
 
     # Teste sem nome da funcao
-    url_sem_nome = reverse('alocacao_setor_funcao_read', kwargs={'funcao_nome': ''})
+    url_sem_nome = reverse('setores-funcao', kwargs={'funcao_nome': ''})
     response = client.get(url_sem_nome)
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == {'detail': 'Nome da função é obrigatório.'}
