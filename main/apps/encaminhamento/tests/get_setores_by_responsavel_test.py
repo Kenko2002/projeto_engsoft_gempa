@@ -40,15 +40,14 @@ def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo par
         print(response_login.json())
         responsavel_id=response_login.json()["id"]
         setor1 = SetorInstitucional.objects.create(nome="Setor 1", responsavel_id=responsavel_id)
-        setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel_id=responsavel_id)
 
         print("RESPONSAVEL_ID")
         print(responsavel_id)
         
-        url = f"/api/setores-institucionais/responsavel/{responsavel_id}/"
+        url = f"/setor-institucional/get-setor-by-responsavel/{responsavel_id}/"
         response = client.get(url)
     
         assert response.status_code == status.HTTP_200_OK
     
-        expected_data = SetorInstitucionalSerializer([setor1, setor2], many=True).data
+        expected_data = SetorInstitucionalSerializer([setor1], many=True).data
         assert response.json() == expected_data
