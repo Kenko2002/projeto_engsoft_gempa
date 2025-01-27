@@ -5,7 +5,8 @@ from django.urls import reverse
 from apps.encaminhamento.models import SetorInstitucional, Vaga, Funcao
 from apps.socialentity.models import Responsavel, Endereco # Assuming you have these models
 from apps.atendimento.models import UnidadeOrganizacional # Assuming this is your model
-
+import json
+from django.db import transaction
 
 @pytest.mark.django_db
 def test_setor_por_funcao_api_view():
