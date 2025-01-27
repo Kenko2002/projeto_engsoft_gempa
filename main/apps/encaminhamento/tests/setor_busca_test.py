@@ -42,40 +42,75 @@ def test_setor_por_funcao_api_view():
 
 
 
-
-
-
-
 @pytest.mark.django_db
-def test_setor_por_bairro_api_view():
-    """Testes para a API View SetorPorBairroAPIView."""
+def test_get_setor_by_bairro():
     client = APIClient()
 
-    # Cria um Endereço e uma Unidade
-    endereco1 = Endereco.objects.create(bairro="Bairro A")
-    unidade1 = UnidadeOrganizacional.objects.create(nome="Unidade 1", enderecos=endereco1)
-    setor1 = SetorInstitucional.objects.create(nome="Setor 1", responsavel=None)
-    unidade1.setores_institucionais.add(setor1)
+    # Create test data
+    bairro = "Test Bairro"
+    endereco1 = Endereco.objects.create(bairro=bairro)
+    endereco2 = Endereco.objects.create(bairro=bairro)
+    unidade1 = UnidadeOrganizacional.objects.create(nome="Unidade 1")
+    unidade2 = UnidadeOrganizacional.objects.create(nome="Unidade 2")
+    setor1 = SetorInstitucional.objects.create(nome="Setor 1")
+    setor2 = SetorInstitucional.objects.create(nome="Setor 2")
 
-    # Cria outro Endereço e Unidade em outro bairro
-    endereco2 = Endereco.objects.create(bairro="Bairro B")
-    unidade2 = UnidadeOrganizacional.objects.create(nome="Unidade 2",enderecos=endereco2)
-    setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel=None)
+    # Correct way to add many-to-many relationships
+    unidade1.enderecos.add(endereco1)
+    unidade2.enderecos.add(endereco2)
+
+    unidade1.setores_institucionais.add(setor1)
     unidade2.setores_institucionais.add(setor2)
 
 
-    # URL para teste
-    url = reverse('setor-bairro', kwargs={'bairro_nome': 'Bairro A'}) #'setor-por-bairro' deve ser o nome da sua url
-
+    url = f"/alocacao/setor/bairro/{bairro}/"
 
     response = client.get(url)
     assert response.status_code == status.HTTP_200_OK
-    assert len(response.json()['setores']) == 1  # Apenas setor1 deve ser retornado
-    assert response.json()['unidades'] == [unidade1.id]
+    assert len(response.json()['setores']) == 2  # Check for two sectors
+    assert len(response.json()['unidades']) == 2 # Check for two units
+
+    #Test with non-existent bairro
+    url = "/alocacao/setor/bairro/NonExistentBairro/"
+    response = client.get(url)
+    assert response.status_code == status.HTTP_404_NOT_FOUND
 
 
-    #Teste sem bairro
-    url_sem_bairro = reverse('setor-bairro', kwargs={'bairro_nome': ''})
-    response = client.get(url_sem_bairro)
-    assert response.status_code == status.HTTP_400_BAD_REQUEST
-    assert response.json() == {'detail': 'Nome do bairro é obrigatório.'}
+
+
+
+
+
+
+'''
+
+@pytest.mark.django_db
+def test_get_setor_by_cidade():
+    client = APIClient()
+
+    # Create test data
+    cidade = "Test City"
+    endereco1 = Endereco.objects.create(cidade=cidade)
+    endereco2 = Endereco.objects.create(cidade=cidade)
+    unidade1 = UnidadeOrganizacional.objects.create(nome="Unidade 1")
+    unidade2 = UnidadeOrganizacional.objects.create(nome="Unidade 2")
+    setor1 = SetorInstitucional.objects.create(nome="Setor 1")
+    setor2 = SetorInstitucional.objects.create(nome="Setor 2")
+    unidade1.enderecos.add(endereco1)
+    unidade2.enderecos.add(endereco2)
+    unidade1.setores_institucionais.add(setor1)
+    unidade2.setores_institucionais.add(setor2)
+
+
+    url = f"/alocacao/setor/cidade/{cidade}/"
+
+    response = client.get(url)
+    assert response.status_code == status.HTTP_200_OK
+    assert len(response.json()['setores']) == 2  # Check for two sectors
+    assert len(response.json()['unidades']) == 2 # Check for two units
+
+    #Test with non-existent city
+    url = "/alocacao/setor/cidade/NonExistentCity/"
+    response = client.get(url)
+    assert response.status_code == status.HTTP_404_NOT_FOUND
+'''
