@@ -35,7 +35,7 @@ def test_setor_por_funcao_api_view():
 
 
     # Teste com função inexistente
-    url_inexistente = reverse('setor-por-funcao', kwargs={'funcao_nome': 'Função Inexistente'})
+    url_inexistente = reverse('setores-funcao', kwargs={'funcao_nome': 'Função Inexistente'})
     response = client.get(url_inexistente)
     assert response.status_code == status.HTTP_404_NOT_FOUND
     assert response.json() == {'detail': 'Função não encontrada.'}
