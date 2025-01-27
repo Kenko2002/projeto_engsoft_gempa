@@ -33,8 +33,7 @@ def test_avaliar_prestador_api_view():
         ]
     }
 
-    url = f'/alocacao/{alocacao.id}/avaliar/' #Assumindo que esta é sua url
-
+    url= f'/alocacao/avaliar-prestador/{alocacao.id}/'
 
     # Teste de atualização bem-sucedida
     response = client.put(url, data=json.dumps(data), content_type='application/json')
@@ -56,7 +55,7 @@ def test_avaliar_prestador_api_view():
     assert response.status_code == status.HTTP_400_BAD_REQUEST  #verifica se a resposta é de erro
 
     # Teste com alocação inexistente
-    url_inexistente = '/alocacao/9999/avaliar/'
+    url_inexistente = f'/alocacao/avaliar-prestador/9999999999999/'
     response = client.put(url_inexistente, data=json.dumps(data), content_type='application/json')
     assert response.status_code == status.HTTP_404_NOT_FOUND
     assert response.json() == {"detail": "Alocação não encontrada."}
