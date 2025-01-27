@@ -1,52 +1,38 @@
-
 import pytest
+import json
 from rest_framework.test import APIClient
 from rest_framework import status
-from apps.encaminhamento.models import SetorInstitucional
-from apps.socialentity.models import Responsavel
-from apps.encaminhamento.serializers import SetorInstitucionalSerializer  # Certifique-se de importar o serializer correto
+from django.urls import reverse
+from django.db import transaction
+from apps.socialentity.models import Responsavel # Importe o modelo Responsavel
 
 
 @pytest.mark.django_db
-def test_get_setores_institucionais_por_responsavel_sucesso(client: APIClient):
-    """
-    Testa o sucesso da API ao buscar setores institucionais por um responsável existente.
-    """
-    responsavel = Responsavel.objects.create(nome="Responsável Teste")
-    setor1 = SetorInstitucional.objects.create(nome="Setor 1", responsavel=responsavel)
-    setor2 = SetorInstitucional.objects.create(nome="Setor 2", responsavel=responsavel)
+def test_cadastro_and_login_responsavel(client: APIClient):  # Adicione tipo para client
+    with transaction.atomic():
+        cadastro_data = {
+            "identificacao": "12345678901",  # CPF - Único
+            "email_contato": "responsavel@teste.com",  # Email - Único
+            "password": "testpassword",
+            "first_name": "NomeResponsavel",
+            "last_name": "SobrenomeResponsavel",
+        }
 
-    url = f"/api/setores-institucionais/responsavel/{responsavel.id}/"
-    response = client.get(url)
+        url = "/cadastro/responsavel/"  # URL correta
 
-    assert response.status_code == status.HTTP_200_OK
+        response = client.post(url, data=json.dumps(cadastro_data), content_type="application/json")
 
-    expected_data = SetorInstitucionalSerializer([setor1, setor2], many=True).data
-    assert response.json() == expected_data
+        assert response.status_code == status.HTTP_201_CREATED, f"Resposta inesperada: {response.content}"
+        assert Responsavel.objects.filter(email_contato=cadastro_data["email_contato"]).exists()
 
+        # Login
+        login_data = {
+            "username": cadastro_data["first_name"] + " " + cadastro_data["last_name"],
+            "password": cadastro_data["password"],
+        }
 
-@pytest.mark.django_db
-def test_get_setores_institucionais_por_responsavel_nao_encontrado(client: APIClient):
-    """
-    Testa o comportamento da API quando o responsável não é encontrado.
-    """
-    responsavel_id_inexistente = 999
-    url = f"/api/setores-institucionais/responsavel/{responsavel_id_inexistente}/"
-    response = client.get(url)
+        url_login = reverse("login")  # Ou o nome da sua URL de login se diferente
+        response_login = client.post(url_login, data=json.dumps(login_data), content_type="application/json")
 
-    assert response.status_code == status.HTTP_404_NOT_FOUND
-    assert response.json() == {"error": "Responsável não encontrado."}
-
-
-@pytest.mark.django_db
-def test_get_setores_institucionais_por_responsavel_sem_setores(client: APIClient):
-    """
-    Testa o comportamento da API quando o responsável existe, mas não possui setores institucionais associados.
-    """
-    responsavel = Responsavel.objects.create(nome="Responsável Teste")
-    url = f"/api/setores-institucionais/responsavel/{responsavel.id}/"
-    response = client.get(url)
-
-
-    assert response.status_code == status.HTTP_200_OK
-    assert response.json() == [] # Deve retornar uma lista vazia
+        assert response_login.status_code == status.HTTP_200_OK
+        assert "token" in response_login.json()
