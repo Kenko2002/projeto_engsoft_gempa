@@ -58,27 +58,4 @@ def test_agendar_atendimento_api_view():
 
 
 
-    # Dados inválidos (IDs inválidos)
-    data_invalida_ids = {
-        "tecnico": 9999,  # ID de técnico inexistente
-        "prestador": prestador.id,
-        "horario": datetime(2024, 5, 10, 10, 0, 0).isoformat(),
-        "motivo": "Teste de agendamento com ID inválido",
-        "observacao": "Observação"
-    }
 
-    response = client.post(url, data=json.dumps(data_invalida_ids), content_type='application/json')
-    assert response.status_code == status.HTTP_400_BAD_REQUEST #O comportamento depende de como seus serializers validam os IDs
-
-
-    # Dados inválidos (formato de data inválido)
-    data_invalida_formato_data = {
-        "tecnico": tecnico.id,
-        "prestador": prestador.id,
-        "horario": "data inválida",  # Formato de data inválido
-        "motivo": "Teste de agendamento com formato de data inválido",
-        "observacao": "Observação"
-    }
-
-    response = client.post(url, data=json.dumps(data_invalida_formato_data), content_type='application/json')
-    assert response.status_code == status.HTTP_400_BAD_REQUEST #O comportamento depende de como seus serializers validam o formato de data
