@@ -6,6 +6,7 @@ from apps.atendimento.models import Atendimento, EnumAtendimentoStatus  # Adjust
 from apps.socialentity.models import Tecnico, Prestador  # Adjust import path if needed
 from datetime import datetime
 
+import json
 from django.contrib.auth.models import User
 
 @pytest.mark.django_db
