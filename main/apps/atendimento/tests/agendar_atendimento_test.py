@@ -6,6 +6,7 @@ from apps.atendimento.models import Atendimento, EnumAtendimentoStatus  # Adjust
 from apps.socialentity.models import Tecnico, Prestador  # Adjust import path if needed
 from datetime import datetime
 
+from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 def test_agendar_atendimento_api_view():
