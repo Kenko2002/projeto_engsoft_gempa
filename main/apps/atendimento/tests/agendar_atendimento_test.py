@@ -12,10 +12,18 @@ def test_agendar_atendimento_api_view():
     """Testes para a API View AgendarAtendimentoAPIView."""
     client = APIClient()
 
-    # Cria técnicos e prestadores para o teste
-    tecnico = Tecnico.objects.create(user=None) #Substitua None caso necessario
-    prestador = Prestador.objects.create(user=None) #Substitua None caso necessario
 
+    user_tecnico = User.objects.create_user(username='tecnicotest', password='testpassword')
+    tecnico = Tecnico.objects.create(user=user_tecnico)
+
+    prestador = Prestador.objects.create(nome="Prestador Teste", identificacao="1234567890", ativo=True)
+    #atendimento = Atendimento.objects.create(
+    #    horario=datetime(2024, 1, 1, 10, 0, 0),
+    #    motivo="Motivo Teste",
+    #    tecnico=tecnico,
+    #    prestador=prestador
+    #)
+    
 
     # Dados válidos para agendamento
     data_valida = {
@@ -26,7 +34,7 @@ def test_agendar_atendimento_api_view():
         "observacao": "Observação do teste"
     }
 
-    url = reverse('agendar-atendimento')  # Substitua 'agendar-atendimento' pelo nome da sua URL
+    url = reverse('agendar_atendimento')  # Substitua 'agendar-atendimento' pelo nome da sua URL
 
 
     response = client.post(url, data=json.dumps(data_valida), content_type='application/json')
