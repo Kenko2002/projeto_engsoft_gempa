@@ -210,6 +210,9 @@ jobs:
             #-Dsonar.python.coverage.reportPaths=test-report/coverage.xml
             #-Dsonar.testExecutionReportPaths=test-report/junit-report.xml
 
+      - name: Build Docker Image 
+        run: |
+           docker build -t app:latest
 
 
 
