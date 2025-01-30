@@ -240,7 +240,7 @@ jobs:
 #            --push .
 
       - name: Build and push
-        uses: docker/buildx-build@v2
+        uses: docker/buildx-build@v3
         with:
           context: /home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa/main/
           file: ./main/Dockerfile # Certifique-se de que o path está correto
