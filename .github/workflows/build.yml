@@ -52,7 +52,7 @@ jobs:
         image: postgres:13
         ports:
           - 5432:5432
-        
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,13 +70,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest pytest-json-report pytest-metadata pytest-django pytest-cov
-
       - name: Migrate Database
         run: |
           pwd
           cd main
           python manage.py migrate --noinput
-
       - name: Run Server , Tests and upload report
         run: |
           pwd
@@ -84,24 +82,38 @@ jobs:
           
           python manage.py makemigrations
           python manage.py check
-
-
-
-
-
+          #python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000  --error-logfile - &
           pytest --cov=. --cov-report xml:coverage.xml --junitxml=junit-report.xml 
           cd ..
-
           
-
-
-
+          
+          #python manage.py test 
+          #cd apps
+          #cd socialentity
+          #cd test
+          #cd unit
+          #pip install pytest pytest-json-report pytest-metadata pytest-django
+          #pytest entities_crud_test.py 
+          #pytest relatorio_acompanhar_prestadores_test.py 
+          #pytest cadastro_and_login_test.py
+          
+          #cd ../../../ 
+          #cd encaminhamento/test/unit 
+          ##pytest entities_crud_test.py 
+          #cd ../../../ 
+          #cd atendimento/test/unit 
+          #pytest entities_crud_test.py -s
+          
+          
+          #cd ../../../ 
+          #cd alocacao/test/unit 
+          #pytest entities_crud_test.py -s
       #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
       - uses: actions/upload-artifact@v3  # Upload reports as artifacts
         with:
           name: test-reports
           path: main
-          
+
       - uses: actions/download-artifact@v3  # <--- CRUCIAL STEP! Download before using.
         with:
           name: test-reports       # Matches the upload name
@@ -120,9 +132,16 @@ jobs:
           sudo rm -rf /tmp/*
           echo "Temp folder cleaned."
           
+      - name: Check Directory Permissions
+        run: |
+          ls -ld main
+          ls -l main
+      - name: Set Directory Permissions
+        run: |
+          sudo chmod -R u+rwx main
     
 
-      
+
       #- name: Run SonarQube Scan with Debugging
       #  run: |
       #    echo "SONAR_SCANNER_OPTS=-X" >> $GITHUB_ENV
@@ -130,8 +149,8 @@ jobs:
       #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          
-          
+
+
       #- name: SonarQube Cloud Scan
       #  uses: SonarSource/sonarcloud-github-action@master
          #uses: SonarSource/sonarqube-scan-action@v4.1.0
@@ -149,12 +168,10 @@ jobs:
           pwd
           #cd main
           ls
-
-
           
           
       
-          
+
 
       - name: SonarQube Report Import
         uses: SonarSource/sonarqube-scan-action@v4.1.0
@@ -168,14 +185,9 @@ jobs:
             -Dsonar.projectName=projeto_engsoft_gempa
             -Dsonar.projectVersion=1.0
             -Dsonar.tests=main/apps/alocacao/tests,main/apps/encaminhamento/tests,main/apps/atendimento/tests,main/apps/socialentity/tests
-            -Dsonar.testExecutionReportPaths=test-report/junit-report.xml
             
-            #-> Comentado pra não dar erro e o build.yaml conseguir executar o Build Docker Image with Buildx
-            #-Dsonar.python.coverage.reportPaths=test-report/coverage.xml  
-
-
-
-
+            #-Dsonar.python.coverage.reportPaths=test-report/coverage.xml
+            #-Dsonar.testExecutionReportPaths=test-report/junit-report.xml
       - name: Build Docker Image with Buildx
         env:
           ALLOWED_HOSTS: "*"
