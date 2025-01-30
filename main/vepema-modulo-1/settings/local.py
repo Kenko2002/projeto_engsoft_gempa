@@ -5,6 +5,11 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 SECRET_KEY = config("DJANGO_SECRET_KEY") 
 
 
+EMAIL_HOST = config('EMAIL_HOST', default='smtp.example.com')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='user@example.com')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='password')
+
+
 if config("USE_SQLITE", default=True, cast=bool):
     DATABASES = {
         "default": {
