@@ -100,7 +100,7 @@ jobs:
       - uses: actions/upload-artifact@v3  # Upload reports as artifacts
         with:
           name: test-reports
-          path: main
+          path: .github/workflows
           
       - uses: actions/download-artifact@v3  # <--- CRUCIAL STEP! Download before using.
         with:
@@ -120,13 +120,6 @@ jobs:
           sudo rm -rf /tmp/*
           echo "Temp folder cleaned."
           
-      - name: Check Directory Permissions
-        run: |
-          ls -ld main
-          ls -l main
-      - name: Set Directory Permissions
-        run: |
-          sudo chmod -R u+rwx main
     
 
       
