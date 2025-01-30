@@ -2,7 +2,9 @@ from .base import *
 from decouple import config
 
 DEBUG = config('DEBUG', default=True, cast=bool)
-SECRET_KEY = config("DJANGO_SECRET_KEY") 
+#SECRET_KEY = config("DJANGO_SECRET_KEY") 
+DJANGO_SECRET_KEY = ""
+
 
 
 
