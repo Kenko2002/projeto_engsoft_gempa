@@ -224,14 +224,14 @@ jobs:
             --build-arg DB_USER_PRODUCTION="${{ github.event.inputs.DB_USER_PRODUCTION || '' }}" \
             --build-arg DEBUG="${{ github.event.inputs.DEBUG || 'True' }}" \
             --build-arg DEFAULT_FROM_EMAIL="${{ github.event.inputs.DEFAULT_FROM_EMAIL || 'no-reply@example.com' }}" \
-            --build-arg HASHIDS_SALT="${{ github.event.inputs.HASHIDS_SALT || 'some_random_secret_salt' }}" \ # Gere um salt forte para produção!
+            --build-arg HASHIDS_SALT="${{ github.event.inputs.HASHIDS_SALT || 'some_random_secret_salt' }}" \ 
             --build-arg DJANGO_SETTINGS_MODULE="${{ github.event.inputs.DJANGO_SETTINGS_MODULE || 'vepema-modulo-1.settings.local' }}" \
             --build-arg URL_VALIDATION="${{ github.event.inputs.URL_VALIDATION || '' }}" \
             --build-arg URL="${{ github.event.inputs.URL || '' }}" \
             --build-arg POSTGRES_USER="${{ github.event.inputs.POSTGRES_USER || 'postgres' }}" \
             --build-arg POSTGRES_PASSWORD="${{ github.event.inputs.POSTGRES_PASSWORD || 'postgres' }}" \
             --build-arg EMAIL_HOST="${{ github.event.inputs.EMAIL_HOST || 'smtp.example.com' }}" \
-            --build-arg EMAIL_HOST_PASSWORD=${github.event.inputs.EMAIL_HOST_PASSWORD || ''} \
+            --build-arg EMAIL_HOST_PASSWORD=${{github.event.inputs.EMAIL_HOST_PASSWORD || ''}} \
             --build-arg EMAIL_HOST_USER="${{ github.event.inputs.EMAIL_HOST_USER || '' }}" \
             --build-arg EMAIL_PORT="${{ github.event.inputs.EMAIL_PORT || 587 }}" \
             --build-arg EMAIL_USE_TLS="${{ github.event.inputs.EMAIL_USE_TLS || 'True' }}" \
