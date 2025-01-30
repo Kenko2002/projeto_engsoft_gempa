@@ -196,6 +196,7 @@ URL_VALIDATION = config('URL_VALIDATION', default='http://localhost:8000/validat
 
 HASHIDS_SALT = config('HASHIDS_SALT', default='some_random_secret_salt') # **MUITO IMPORTANTE:** Alterar para um salt aleatório e forte em produção!
 
+DJANGO_SECRET_KEY = config('DJANGO_SECRET_KEY', default="")
 
 URL_VALIDATION_SUCCESS = 'password_reset'
 URL_VALIDATION_ERRO = 'validation_erro'
