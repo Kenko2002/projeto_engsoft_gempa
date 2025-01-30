@@ -1,9 +1,10 @@
 from .base import *
 from decouple import config
+from os import environ
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 #SECRET_KEY = config("DJANGO_SECRET_KEY") 
-DJANGO_SECRET_KEY = ""
+DJANGO_SECRET_KEY = environ.get("DJANGO_SECRET_KEY")
 
 
 
