@@ -242,7 +242,7 @@ jobs:
       - name: Build and push
         uses: docker/buildx-build@v2
         with:
-          context: .
+          context: /home/runner/work/projeto_engsoft_gempa/projeto_engsoft_gempa/main/
           file: ./main/Dockerfile # Certifique-se de que o path está correto
           platform: linux/amd64
           push: true
