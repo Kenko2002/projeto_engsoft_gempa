@@ -200,6 +200,7 @@ jobs:
           # ... outros segredos
         run: |
           cd main
+          ls -l
           docker buildx build \
             --platform linux/amd64 \
             --build-arg ALLOWED_HOSTS="${{ github.event.inputs.ALLOWED_HOSTS || '*' }}" \
