@@ -109,12 +109,12 @@ jobs:
           #cd alocacao/test/unit 
           #pytest entities_crud_test.py -s
       #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
-      - uses: actions/upload-artifact@v3  # Upload reports as artifacts
+      - uses: actions/upload-artifact@v4  # Upload reports as artifacts
         with:
           name: test-reports
           path: main
 
-      - uses: actions/download-artifact@v3  # <--- CRUCIAL STEP! Download before using.
+      - uses: actions/download-artifact@v4  # <--- CRUCIAL STEP! Download before using.
         with:
           name: test-reports       # Matches the upload name
           path: test-reports       # Where to download. This creates the 'test-reports'
