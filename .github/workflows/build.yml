@@ -188,49 +188,28 @@ jobs:
             
             #-Dsonar.python.coverage.reportPaths=test-report/coverage.xml
             #-Dsonar.testExecutionReportPaths=test-report/junit-report.xml
-      - name: Build Docker Image with Buildx
-        env:
-          ALLOWED_HOSTS: "*"
-          USE_SQLITE: "True"
-          DB_ENGINE_LOCAL: "django.db.backends.sqlite3"
-          DB_HOST_LOCAL: ""
-          DB_NAME_LOCAL: "sqlite3.db"
-          DB_USER_LOCAL: ""
-          DB_PASSWORD_LOCAL: ""
-          DB_PORT_LOCAL: ""
-          DB_ENGINE_TEST: "django.db.backends.sqlite3"
-          DB_HOST_TEST: ""
-          DB_NAME_TEST: "sqlite3.db"
-          DB_PASSWORD_TEST: ""
-          DB_PORT_TEST: ""
-          DB_USER_TEST: ""
-          DB_ENGINE_PRODUCTION: "django.db.backends.postgres"
-          DB_HOST_PRODUCTION: ""
-          DB_NAME_PRODUCTION: ""
-          DB_PASSWORD_PRODUCTION: ""
-          DB_PORT_PRODUCTION: ""
-          DB_USER_PRODUCTION: ""
-          DEBUG: "True" 
-          DEFAULT_FROM_EMAIL: "xxxxxxx@xxxx.com"
-          HASHIDS_SALT: "hA8(scA@!fg3*sc&xaGh&6%-l<._&xCf,"
-          DJANGO_SETTINGS_MODULE: "vepema-modulo-1.settings.local"
-          URL_VALIDATION: ""
-          URL: ""
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          EMAIL_HOST: ""
-          EMAIL_HOST_PASSWORD: ""
-          EMAIL_HOST_USER: ""
-          EMAIL_PORT: 587
-          EMAIL_USE_TLS: "True"
-          TEST_URL: http://localhost:8000  
-          DJANGO_SECRET_KEY: "django-insecure-&we(0t(&@t(90rx$19tr3dms-3_4ngz6*6d=9=5ghz=ov#%^4^"
-        run: |
-          pwd
-          cd main
-          docker buildx install 
-          docker buildx create --use 
-          docker buildx build --tag renzofraga/nome-da-imagem:tag .
+      
 
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push Docker image
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }} # Apenas segredos aqui
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          # ... outros segredos
+        run: |
+          cd main
+          docker buildx build \
+            --platform linux/amd64 \ # Especifique a plataforma se necessário
+            --build-arg DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY} \
+            --build-arg EMAIL_HOST=${{ github.event.inputs.EMAIL_HOST || 'smtp.example.com' }} \  # Exemplo com padrão
+            --build-arg EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD} \
+            --build-arg POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
+            # ... repita para outras variáveis
+            -t renzofraga/nome-da-imagem:tag \
+            --push . # Adicione --push para enviar a imagem para o registro
 
 
