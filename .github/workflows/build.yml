@@ -100,7 +100,7 @@ jobs:
       - uses: actions/upload-artifact@v3  # Upload reports as artifacts
         with:
           name: test-reports
-          path: .github/workflows
+          path: main
           
       - uses: actions/download-artifact@v3  # <--- CRUCIAL STEP! Download before using.
         with:
