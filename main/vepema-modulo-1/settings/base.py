@@ -182,19 +182,25 @@ if DEBUG:
 
 
 EMAIL_HOST = config('EMAIL_HOST', default='smtp.example.com')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int) # Porta padrão para TLS
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='user@example.com')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='your_password')  # **NUNCA** faça isso em produção!
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='no-reply@example.com')
+
+URL_VALIDATION_SUCCESS = config('URL_VALIDATION_SUCCESS', default='password_reset')
+URL_VALIDATION_ERRO = config('URL_VALIDATION_ERRO', default='validation_erro')
+
+URL = config('URL', default='http://localhost:8000')
+URL_VALIDATION = config('URL_VALIDATION', default='http://localhost:8000/validation')
+
+HASHIDS_SALT = config('HASHIDS_SALT', default='some_random_secret_salt') # **MUITO IMPORTANTE:** Alterar para um salt aleatório e forte em produção!
+
 
 URL_VALIDATION_SUCCESS = 'password_reset'
 URL_VALIDATION_ERRO = 'validation_erro'
 
-URL = config('URL')
-URL_VALIDATION = config('URL_VALIDATION')
 
-HASHIDS_SALT = config('HASHIDS_SALT')
 
 
 LOGGING = {
