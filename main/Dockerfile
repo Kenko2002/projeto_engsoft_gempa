@@ -14,6 +14,12 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+
+ARG DJANGO_SECRET_KEY
+
+ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
+
+
 RUN python manage.py collectstatic --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--reload", "--timeout=8000", "--workers=2", "vepema-modulo-1.wsgi:application"]
