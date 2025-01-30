@@ -84,8 +84,6 @@ jobs:
           
           python manage.py makemigrations
           python manage.py check
-          #python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000  --error-logfile - &
-
 
 
 
@@ -95,36 +93,7 @@ jobs:
           cd ..
 
           
-          
-          #python manage.py test 
 
-
-
-
-
-          #cd apps
-          #cd socialentity
-          #cd test
-          #cd unit
-          #pip install pytest pytest-json-report pytest-metadata pytest-django
-          #pytest entities_crud_test.py 
-          #pytest relatorio_acompanhar_prestadores_test.py 
-          #pytest cadastro_and_login_test.py
-
-
-          
-          #cd ../../../ 
-          #cd encaminhamento/test/unit 
-          ##pytest entities_crud_test.py 
-
-          #cd ../../../ 
-          #cd atendimento/test/unit 
-          #pytest entities_crud_test.py -s
-          
-          
-          #cd ../../../ 
-          #cd alocacao/test/unit 
-          #pytest entities_crud_test.py -s
 
 
       #python manage.py test --coverage --cov-report xml:../coverage.xml --pdb -vv
@@ -209,6 +178,9 @@ jobs:
             
             #-Dsonar.python.coverage.reportPaths=test-report/coverage.xml
             #-Dsonar.testExecutionReportPaths=test-report/junit-report.xml
+
+
+
 
       - name: Build Docker Image with Buildx
         env:
