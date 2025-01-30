@@ -176,7 +176,7 @@ jobs:
             -Dsonar.projectVersion=1.0
             -Dsonar.tests=main/apps/alocacao/tests,main/apps/encaminhamento/tests,main/apps/atendimento/tests,main/apps/socialentity/tests
             
-            -Dsonar.python.coverage.reportPaths=main/coverage.xml
+            -Dsonar.python.coverage.reportPaths=test-report/coverage.xml
             -Dsonar.testExecutionReportPaths=test-report/junit-report.xml
 
 
