@@ -240,7 +240,7 @@ jobs:
 #            --push .
 
       - name: Build and push
-        uses: docker/buildx-build@v1
+        uses: docker/buildx-build@v2
         with:
           context: .
           file: ./main/Dockerfile # Certifique-se de que o path está correto
