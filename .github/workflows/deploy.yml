@@ -25,6 +25,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
+          cd main  # Change to the directory containing the Dockerfile
           docker build -t django-app .
           docker tag django-app:latest ${{ secrets.ECR_REPOSITORY }}:latest
           docker push ${{ secrets.ECR_REPOSITORY }}:latest
@@ -32,4 +33,3 @@ jobs:
       - name: Update ECS Service
         run: |
           aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_SERVICE }} --force-new-deployment
-        
