@@ -109,5 +109,59 @@ Este repositório utiliza o **GitHub Actions** para CI/CD. O workflow realiza os
 - **SonarCloud** para análise de qualidade de código.
 
 ---
+# Como Fazer um Kamehameha 🐉💥
 
-## Como Fazer um Kamehameha
+**Atenção**: Este é um guia fictício para fãs de *Dragon Ball*. O Kamehameha é uma técnica de energia fictícia e não funciona no mundo real. Use apenas para roleplay, cosplay ou diversão!
+
+---
+
+## 📋 Pré-requisitos
+- **Energia Ki (fictícia):** Você precisa acreditar que possui energia interior (ki) acumulada.
+- **Postura Correta:** Inspirada no estilo da Tartaruga (Kame-Sennin).
+- **Gritos Opcionais:** Quanto mais alto, mais poderoso (segundo as leis do anime).
+- **Cabelo Estiloso (opcional):** Se seu cabelo ficar espetado ao carregar, você está no caminho certo.
+
+---
+
+## 🐢 Passo a Passo
+
+### 1. **Posição Inicial**
+- Afaste as pernas na largura dos ombros.
+- Flexione levemente os joelhos.
+- Estenda os braços para os lados, como se estivesse segurando uma esfera invisível.
+
+### 2. **Foco no Ki**
+- Feche os olhos e concentre-se em sua "energia interior".
+- Imagine uma luz azul brilhante se formando entre suas mãos.
+- **Dica avançada:** Grite **"Haaaaaa!"** para acelerar o processo.
+
+### 3. **Carregando o Kamehameha**
+- Junte as mãos na altura do quadril, palmas viradas para frente.
+- Grite **"Ka... me... ha... me..."** lentamente, enquanto "puxa" energia imaginária.
+- **Efeito Visual (opcional):** Balance os braços para trás como o Goku.
+
+### 4. **Liberação do Poder**
+- Quando sentir que a energia está no limite, empurre as mãos para frente.
+- Grite **"HAAAAAA!"** com toda sua força.
+- **Direcione o Ataque:** Aponte para um alvo imaginário (ex: uma montanha fictícia).
+
+---
+
+## ⚡ Dicas para Perfeição
+- **Treine em Grupo:** Convide amigos para fazerem um Kamehameha em sincronia.
+- **Use Efeitos Sonoros:** "Whooosh" e "Boom" aumentam o dano em 50% (na sua imaginação).
+- **Roupas Rasgadas:** Funcionam como um multiplicador de poder (segundo as regras do anime).
+
+---
+
+## 🚫 Avisos Importantes
+- Não tente isso em áreas públicas sem aviso prévio (você pode assustar os vizinhos).
+- Nenhuma energia real será liberada, mas sua paixão por Dragon Ball pode aumentar drasticamente.
+
+---
+
+🌌 **Créditos:**  
+Técnica desenvolvida pelo Mestre Kame-Sennin.  
+Adaptado por [Seu Nome] para fins educacionais fictícios.  
+
+🔄 **Próximo Tutorial:** Como voar usando o Bukujutsu (ou pelo menos pular bem alto).
