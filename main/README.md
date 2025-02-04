@@ -166,4 +166,4 @@ Adaptado por [Seu Nome] para fins educacionais fictícios.
 
 🔄 **Próximo Tutorial:** Como voar usando o Bukujutsu (ou pelo menos pular bem alto).
 
-blablablabla
+## ALONE IN THE SECTOR...
