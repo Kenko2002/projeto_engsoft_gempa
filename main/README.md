@@ -166,13 +166,4 @@ Adaptado por [Seu Nome] para fins educacionais fictícios.
 
 🔄 **Próximo Tutorial:** Como voar usando o Bukujutsu (ou pelo menos pular bem alto).
 
-# Como Voar de Foguete Para o Sol
-
----
-
-## 📋 Pré-requisitos
-- **Um Foguete**
-- **Parceria Bilionária com a NASA**
-- **Força de Vontade**
-
-## BLABLABLA
+blablablabla
