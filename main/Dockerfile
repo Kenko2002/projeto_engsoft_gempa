@@ -1,8 +1,8 @@
-FROM python:3.10-slim-bullseye as python
+FROM python:3.10-slim-bullseye AS python
 
-ENV DJANGO_SETTINGS_MODULE vepemamoduloum.settings.local
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
-ENV DEBUG true
+ENV DJANGO_SETTINGS_MODULE=vepemamoduloum.settings.local
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV DEBUG=true
 
 WORKDIR /app
 
