@@ -77,7 +77,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'vepema-modulo-1.urls'
+ROOT_URLCONF = 'vepemamoduloum.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -97,7 +97,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'vepema-modulo-1.wsgi.application'
+WSGI_APPLICATION = 'vepemamoduloum.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

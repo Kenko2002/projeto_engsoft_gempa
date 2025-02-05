@@ -9,7 +9,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Vepema-modulo-1",
+        title="vepemamoduloum",
         default_version='v1',
         description="Esse é o Spark compreende funcionalidades de Atendimento Encaminhamento e Presenca de Prestadores de Serviço.",
     ),

@@ -1,6 +1,6 @@
 FROM python:3.10-slim-bullseye as python
 
-ENV DJANGO_SETTINGS_MODULE vepema-modulo-1.settings.local
+ENV DJANGO_SETTINGS_MODULE vepemamoduloum.settings.local
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV DEBUG true
 
@@ -22,4 +22,4 @@ ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
 
 RUN python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--reload", "--timeout=8000", "--workers=2", "vepema-modulo-1.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--reload", "--timeout=8000", "--workers=2", "vepemamoduloum.wsgi:application"]
