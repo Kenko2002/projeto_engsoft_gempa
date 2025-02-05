@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - entrega
+      - renamingproject
   pull_request:
     types: [opened, synchronize, reopened]
 
