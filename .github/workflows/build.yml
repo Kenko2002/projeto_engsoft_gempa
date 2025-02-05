@@ -35,7 +35,7 @@ jobs:
       DEBUG: "True" 
       DEFAULT_FROM_EMAIL: "xxxxxxx@xxxx.com"
       HASHIDS_SALT: "hA8(scA@!fg3*sc&xaGh&6%-l<._&xCf,"
-      DJANGO_SETTINGS_MODULE: "vepema-modulo-1.settings.local"
+      DJANGO_SETTINGS_MODULE: "vepemamoduloum.settings.local"
       URL_VALIDATION: ""
       URL: ""
       POSTGRES_USER: postgres
@@ -83,7 +83,7 @@ jobs:
           
           python manage.py makemigrations
           python manage.py check
-          #python manage.py migrate --noinput && gunicorn vepema-modulo-1.wsgi:application --bind 0.0.0.0:8000  --error-logfile - &
+          #python manage.py migrate --noinput && gunicorn vepemamoduloum.wsgi:application --bind 0.0.0.0:8000  --error-logfile - &
           pytest --cov=. --cov-report xml:coverage.xml --junitxml=junit-report.xml 
           cd ..
           
@@ -225,7 +225,7 @@ jobs:
 #            --build-arg DEBUG="${{ github.event.inputs.DEBUG || 'True' }}" \
 #            --build-arg DEFAULT_FROM_EMAIL="${{ github.event.inputs.DEFAULT_FROM_EMAIL || 'no-reply@example.com' }}" \
 #            --build-arg HASHIDS_SALT="${{ github.event.inputs.HASHIDS_SALT || 'some_random_secret_salt' }}" \ 
-#            --build-arg DJANGO_SETTINGS_MODULE="${{ github.event.inputs.DJANGO_SETTINGS_MODULE || 'vepema-modulo-1.settings.local' }}" \
+#            --build-arg DJANGO_SETTINGS_MODULE="${{ github.event.inputs.DJANGO_SETTINGS_MODULE || 'vepemamoduloum.settings.local' }}" \
 #            --build-arg URL_VALIDATION="${{ github.event.inputs.URL_VALIDATION || '' }}" \
 #            --build-arg URL="${{ github.event.inputs.URL || '' }}" \
 #            --build-arg POSTGRES_USER="${{ github.event.inputs.POSTGRES_USER || 'postgres' }}" \
@@ -291,7 +291,7 @@ jobs:
             - DEBUG=${{ github.event.inputs.DEBUG || 'True' }}
             - DEFAULT_FROM_EMAIL=${{ github.event.inputs.DEFAULT_FROM_EMAIL || 'no-reply@example.com' }}
             - HASHIDS_SALT=${{ github.event.inputs.HASHIDS_SALT || 'some_random_secret_salt' }}
-            - DJANGO_SETTINGS_MODULE=${{ github.event.inputs.DJANGO_SETTINGS_MODULE || 'vepema-modulo-1.settings.local' }}
+            - DJANGO_SETTINGS_MODULE=${{ github.event.inputs.DJANGO_SETTINGS_MODULE || 'vepemamoduloum.settings.local' }}
             - URL_VALIDATION=${{ github.event.inputs.URL_VALIDATION || '' }}
             - URL=${{ github.event.inputs.URL || '' }}
             - POSTGRES_USER=${{ github.event.inputs.POSTGRES_USER || 'postgres' }}
