@@ -26,7 +26,7 @@ jobs:
       - name: Build and push Docker image
         run: |
           cd main  # Change to the directory containing the Dockerfile
-          docker build -t django-app .
+          docker build --build-arg SECRET_KEY="${{ secrets.SECRET_KEY }}" -t django-app .
           docker tag django-app:latest ${{ secrets.ECR_REPOSITORY }}:latest
           docker push ${{ secrets.ECR_REPOSITORY }}:latest
 
