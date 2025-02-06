@@ -268,6 +268,7 @@ jobs:
           push: true
           tags: renzofraga/nome-da-imagem:tag
           build-args: |
+            - SECRET_KEY="${{ secrets.SECRET_KEY }}"
             - ALLOWED_HOSTS=${{ github.event.inputs.ALLOWED_HOSTS || '*' }}
             - USE_SQLITE=${{ github.event.inputs.USE_SQLITE || 'True' }}
             - DB_ENGINE_LOCAL=${{ github.event.inputs.DB_ENGINE_LOCAL || 'django.db.backends.sqlite3' }}
