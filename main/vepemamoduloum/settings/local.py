@@ -17,7 +17,7 @@ if config("USE_SQLITE", default=True, cast=bool):
 else:
     DATABASES = {
         "default": {
-            'ENGINE': config('DB_ENGINE_PRODUCTION', default='django.db.backends.postgresql'),
+            'ENGINE': config('DB_ENGINE_PRODUCTION', default='django.db.backends.sqlite3'),
             "NAME": config("DB_NAME_LOCAL", ""),
             "USER": config("DB_USER_LOCAL", ""),
             "PASSWORD": config("DB_PASSWORD_LOCAL", ""),
