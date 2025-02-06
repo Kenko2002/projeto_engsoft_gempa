@@ -283,7 +283,7 @@ jobs:
             - DB_PASSWORD_TEST=${{ github.event.inputs.DB_PASSWORD_TEST || '' }}
             - DB_PORT_TEST=${{ github.event.inputs.DB_PORT_TEST || '' }}
             - DB_USER_TEST=${{ github.event.inputs.DB_USER_TEST || '' }}
-            - DB_ENGINE_PRODUCTION=${{ github.event.inputs.DB_ENGINE_PRODUCTION || 'django.db.backends.postgres' }}
+            - DB_ENGINE_PRODUCTION=${{ github.event.inputs.DB_ENGINE_PRODUCTION || 'django.db.backends.sqlite3' }}
             - DB_HOST_PRODUCTION=${{ github.event.inputs.DB_HOST_PRODUCTION || '' }}
             - DB_NAME_PRODUCTION=${{ github.event.inputs.DB_NAME_PRODUCTION || '' }}
             - DB_PASSWORD_PRODUCTION=${{ github.event.inputs.DB_PASSWORD_PRODUCTION || '' }}
