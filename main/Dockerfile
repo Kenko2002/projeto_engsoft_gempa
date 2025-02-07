@@ -3,7 +3,8 @@ FROM python:3.10-slim-bullseye AS python
 # Environment variables
 ENV DJANGO_SETTINGS_MODULE=vepemamoduloum.settings.local
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
-ENV DEBUG=true
+# Ensure you set DEBUG to false in production!
+ENV DEBUG=false
 
 # Set working directory
 WORKDIR /app
@@ -12,15 +13,17 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     gcc \
     python3-dev \
     musl-dev \
     python3-dev \
     libffi-dev \
-    && pip install -r requirements.txt
-
+    && pip install -r requirements.txt \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+    
 # Copy application code
 COPY . .
 
@@ -33,5 +36,8 @@ ENV SECRET_KEY=${SECRET_KEY}
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
+
+# Apply migrations
+RUN python manage.py migrate
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--reload", "--timeout=8000", "--workers=2", "vepemamoduloum.wsgi:application"]
