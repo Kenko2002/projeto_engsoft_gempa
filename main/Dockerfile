@@ -17,9 +17,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     python3-dev \
     musl-dev \
-    #libpq-dev \
     python3-dev \
-    libpq-dev \
     libffi-dev \
     && pip install -r requirements.txt
 
@@ -32,9 +30,6 @@ ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
 
 ARG SECRET_KEY
 ENV SECRET_KEY=${SECRET_KEY}
-
-# Remove PostgreSQL-related environment variable
-# ENV DB_ENGINE_PRODUCTION=django.db.backends.postgresql
 
 # Collect static files
 RUN python manage.py collectstatic --noinput

@@ -38,8 +38,6 @@ jobs:
       DJANGO_SETTINGS_MODULE: "vepemamoduloum.settings.local"
       URL_VALIDATION: ""
       URL: ""
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: password
       EMAIL_HOST: ""
       EMAIL_HOST_PASSWORD: ""
       EMAIL_HOST_USER: ""
@@ -47,12 +45,6 @@ jobs:
       EMAIL_USE_TLS: "True"
       TEST_URL: http://localhost:8000  
       DJANGO_SECRET_KEY: "django-insecure-&we(0t(&@t(90rx$19tr3dms-3_4ngz6*6d=9=5ghz=ov#%^4^"
-
-#    services:
-#      postgres:
-#        image: postgres:13
-#        ports:
-#          - 5432:5432
 
     steps:
       - uses: actions/checkout@v4
