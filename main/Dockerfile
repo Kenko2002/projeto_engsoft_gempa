@@ -38,6 +38,7 @@ ENV SECRET_KEY=${SECRET_KEY}
 RUN python manage.py collectstatic --noinput
 
 # Apply migrations
+RUN python manage.py makemigrations
 RUN python manage.py migrate
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--reload", "--timeout=8000", "--workers=2", "vepemamoduloum.wsgi:application"]
